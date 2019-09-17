@@ -53,5 +53,8 @@ class Account
 
 end
 
+a1 = Account.new("Chandon",1000)
+a2 = Account.new("Fernando", 1000)
+
 binding.pry
 0
