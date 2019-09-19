@@ -13,7 +13,7 @@
 
 * Create a User class. The class should have these methods:
   * `#initialize` which takes a username and have a reader method for the username
-  * `#tweets` that returns an array of Tweet instances
+  * `#tweets` that returns an array of Tweet instances belongs to that particular user
   * `#post_tweet` that takse a message, creates a new tweet, and adds it to the user's tweet collection
 * Create a Tweet class. The class should have these methods:
   * `Tweet#message` that returns a string
