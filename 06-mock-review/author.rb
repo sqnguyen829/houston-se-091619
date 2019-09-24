@@ -39,5 +39,17 @@ class Author
         end
         total
     end
+
+    def self.most_words # class method to return author with most words
+       author = Author.all[0] # initially assign first author with most words
+
+        Author.all.each do |a| # iterating through an array of author for finding author with most words
+            if author.total_words < a.total_words 
+                author = a
+            end
+        end
+
+        author # returning array
+    end
     
 end
