@@ -47,25 +47,38 @@ INSERT INTO fans (name, artist_id) VALUES ("VIDHI",169)
 7. Write the SQL to return fans that are not fans of the black eyed peas.
 
 ```sql
-
+SELECT * FROM fans WHERE not artist_id = 169
+SELECT * FROM fans WHERE artist_id != 169
 ```
 
 8. Write the SQL to display an artists name next to their album title
 
 ```sql
-
+SELECT artists.name, albums.title FROM artists JOIN albums WHERE artists.id = albums.artist_id
 ```
 
 9. Write the SQL to display artist name, album name and number of tracks on that album
 
 ```sql
-
+SELECT artists.name, albums.Title, COUNT(tracks.name) FROM artists
+JOIN albums
+ON artists.id = albums.artist_id
+JOIN tracks
+ON albums.id = tracks.album_id
+GROUP BY albums.id
 ```
 
 10. Write the SQL to return the name of all of the artists in the 'Pop' Genre
 
 ```sql
-
+SELECT DISTINCT artists.name FROM artists
+JOIN albums
+ON artists.id = albums.artist_id
+JOIN tracks
+ON albums.id = tracks.album_id
+JOIN genres
+ON tracks.genre_id = genres.id
+WHERE genres.Name = 'Pop';
 ```
 
 ## BONUS (very hard)
@@ -77,5 +90,13 @@ INSERT INTO fans (name, artist_id) VALUES ("VIDHI",169)
     from greatest to least
 
 ```sql
-
+SELECT artists.name,
+COUNT(tracks.id) as num_rock
+FROM tracks
+JOIN albums ON albums.id = tracks.album_id
+JOIN artists ON artists.id = albums.artist_id
+WHERE tracks.genre_id = 1
+GROUP BY artists.id
+HAVING num_rock > 30
+ORDER BY num_rock DESC;
 ```
