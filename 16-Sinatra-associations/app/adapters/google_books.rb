@@ -1,11 +1,12 @@
 module GoogleBooks
   class Adapter
     BASE_URL = 'https://www.googleapis.com/books/v1/volumes?q='
-    
-    attr_reader :author
+
+    attr_reader :author, :author_raw
 
     def initialize(author)
       @author = author_sanitizer(author)
+      @author_raw = author
     end
 
     def fetch_books
@@ -13,6 +14,7 @@ module GoogleBooks
 
       books['items'].each do |item|
         book = ::Book.new
+        book.author = Author.find_or_create_by(name: author_raw)
         book.title = item['volumeInfo']['title']
         book.snippet = item['volumeInfo']['description']
 
