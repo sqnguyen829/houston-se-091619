@@ -1,0 +1,15 @@
+<form action='/books' method='post'>
+<label>Title:</label>
+<input type="text" name="book[title]" />
+<label>Snippet:</label>
+<input type="text" name="book[snippet]"/>
+<label>Author:</label>
+<select name="book[author_id]">
+    <% @authors.each do |author| %>
+        <option value="<%=author.id%>"><%=author.name%></option>
+    <% end %>
+</select>
+<label>New Author's name:</label>
+<input type="text" name="author[name]" />
+<input type="submit" />
+</form>
