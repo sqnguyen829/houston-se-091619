@@ -2,6 +2,6 @@
 <h5><%= @teacher.name %> </h5>
 <h4> Students: </h4>
 
-<% @teacher.students.each do |student| %>
-    <li><%=student.title%></li>
+<% @teacher.courses.each do |course| %>
+    <li>Student Name:<%=course.student.name%> --> Course: <%=course.name%></li>
 <%end%>
