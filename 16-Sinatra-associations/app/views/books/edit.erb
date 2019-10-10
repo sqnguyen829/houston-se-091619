@@ -4,18 +4,6 @@
 <input type="text" name="title" value="<%=@book.title%>" />
 <label>Snippet:</label>
 <input type="text" name="snippet" value="<%=@book.snippet%>" />
-<label>Author:</label>
-<input type="text" name="author" value="<%=@book.author.name%>" />
-
-Change Author:
-<select name="book[author_id]">
-    <% @authors.each do |author| %>
-        <option value="<%=author.id%>"><%=author.name%></option>
-    <% end %>
-</select>
-
-<label>New Author's name:</label>
-<input type="text" name="author[name]" />
 <input type="submit" value="edit book" />
 
 </form>

@@ -27,5 +27,4 @@
 #### **Describe how to nest hashes inside of the params hash**
 * What if author is not there and I want to create a new author and associated with a new book or an exsiting book?
 
-**TASK:** Change `books/edit.erb` so that if author doesn't exists user can create a new author and associate with the book.
         
