@@ -1,0 +1,6 @@
+<h3> Techears: </h3>
+<% @teachers.each do|teacher| %>
+<a href="/teachers/<%= teacher.id %>">
+<li> <%=teacher.name %> </li>
+</a>
+<% end %>
