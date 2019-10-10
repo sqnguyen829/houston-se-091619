@@ -21,6 +21,7 @@ class BooksController < ApplicationController
 
     get '/books/:id/edit' do 
         @book = current_book
+        @authors = Author.all
         erb :'books/edit'
 
     end
