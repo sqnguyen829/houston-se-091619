@@ -1,0 +1,14 @@
+<h1>Trains:</h1>
+<% @trains.each do |train| %>
+<!-- <a href="/trains/<%=train.id%>">
+    <li>
+        <%= train.destination %>
+    </li>
+</a> -->
+
+
+
+ <li>
+    <%= link_to train.destination, train_path(train) %>
+ </li>
+<% end %>
