@@ -1,0 +1,16 @@
+<li> Name: <%= @customer.name %></li>
+<p>
+    Reviewed Restaurants:
+    <% @customer.restaurants.each do |restaurant| %>
+    <li>
+        <%= restaurant.name %>
+    </li>
+    <% end %>
+    
+</p>
+
+
+<%= form_for @customer, method: :delete do |f| %>
+<%= f.submit "Delete Customer" %>
+<% end %>
+
