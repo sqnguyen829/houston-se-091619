@@ -1,0 +1,597 @@
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRestaurants (20191015154430)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "cuisine" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191015154430"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateReviews (20191015154547)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "restaurant_id" integer, "customer_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191015154547"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCustomers (20191015154604)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "customers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191015154604"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-10-15 16:07:15.612812"], ["updated_at", "2019-10-15 16:07:15.612812"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[36mCustomer Load (0.5ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "cuisine", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Bombay Pizza"], ["cuisine", "Indian"], ["created_at", "2019-10-15 16:07:59.114103"], ["updated_at", "2019-10-15 16:07:59.114103"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "cuisine", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "pappasitos"], ["cuisine", "Mexican"], ["created_at", "2019-10-15 16:07:59.119262"], ["updated_at", "2019-10-15 16:07:59.119262"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.3ms)[0m  [1m[32mINSERT INTO "customers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Raul"], ["created_at", "2019-10-15 16:07:59.125727"], ["updated_at", "2019-10-15 16:07:59.125727"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.3ms)[0m  [1m[32mINSERT INTO "customers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Josie"], ["created_at", "2019-10-15 16:07:59.130316"], ["updated_at", "2019-10-15 16:07:59.130316"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.3ms)[0m  [1m[32mINSERT INTO "customers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Vidhi"], ["created_at", "2019-10-15 16:07:59.133811"], ["updated_at", "2019-10-15 16:07:59.133811"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("restaurant_id", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 1], ["customer_id", 1], ["created_at", "2019-10-15 16:07:59.159693"], ["updated_at", "2019-10-15 16:07:59.159693"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRestaurant Load (0.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("restaurant_id", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 2], ["customer_id", 2], ["created_at", "2019-10-15 16:07:59.166279"], ["updated_at", "2019-10-15 16:07:59.166279"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRestaurant Load (0.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mReview Create (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("restaurant_id", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 2], ["customer_id", 3], ["created_at", "2019-10-15 16:07:59.172571"], ["updated_at", "2019-10-15 16:07:59.172571"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRestaurant Load (0.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("restaurant_id", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 1], ["customer_id", 3], ["created_at", "2019-10-15 16:07:59.179416"], ["updated_at", "2019-10-15 16:07:59.179416"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRestaurant Load (0.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("restaurant_id", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 1], ["customer_id", 2], ["created_at", "2019-10-15 16:07:59.185172"], ["updated_at", "2019-10-15 16:07:59.185172"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCustomer Load (0.3ms)[0m  [1m[34mSELECT "customers".* FROM "customers" ORDER BY "customers"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCustomer Load (0.3ms)[0m  [1m[34mSELECT "customers".* FROM "customers" ORDER BY "customers"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."customer_id" = ? LIMIT ?[0m  [["customer_id", 1], ["LIMIT", 11]]
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers" ORDER BY "customers"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" ORDER BY "customers"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ? LIMIT ?[0m  [["customer_id", 1], ["LIMIT", 11]]
+Started GET "/cutsomers" for ::1 at 2019-10-15 11:13:37 -0500
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/cutsomers"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/customers" for ::1 at 2019-10-15 11:13:43 -0500
+Processing by CustomersController#index as HTML
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mCustomer Load (0.4ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/views/customers/index.html.erb:2
+  Rendered customers/index.html.erb within layouts/application (Duration: 8.5ms | Allocations: 3671)
+Completed 200 OK in 415ms (Views: 406.5ms | ActiveRecord: 1.4ms | Allocations: 304067)
+
+
+Started GET "/customers/1" for ::1 at 2019-10-15 11:14:37 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCustomer Load (0.3ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:39:in `current_customer'
+  Rendering customers/show.html.erb within layouts/application
+  Rendered customers/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 833)
+Completed 200 OK in 32ms (Views: 17.1ms | ActiveRecord: 1.7ms | Allocations: 10464)
+
+
+Started GET "/customers/1" for ::1 at 2019-10-15 11:18:56 -0500
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:39:in `current_customer'
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 1]]
+  ↳ app/views/customers/show.html.erb:4
+  Rendered customers/show.html.erb within layouts/application (Duration: 34.6ms | Allocations: 13508)
+Completed 200 OK in 51ms (Views: 48.1ms | ActiveRecord: 1.2ms | Allocations: 19274)
+
+
+Started GET "/customers/1" for ::1 at 2019-10-15 11:20:01 -0500
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:39:in `current_customer'
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 1]]
+  ↳ app/views/customers/show.html.erb:4
+  Rendered customers/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1658)
+Completed 200 OK in 12ms (Views: 9.7ms | ActiveRecord: 0.2ms | Allocations: 7429)
+
+
+Started GET "/customers/1" for ::1 at 2019-10-15 11:21:11 -0500
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:39:in `current_customer'
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 1]]
+  ↳ app/views/customers/show.html.erb:5
+  Rendered customers/show.html.erb within layouts/application (Duration: 6.4ms | Allocations: 2656)
+Completed 200 OK in 19ms (Views: 16.4ms | ActiveRecord: 0.5ms | Allocations: 8414)
+
+
+Started GET "/customers/1" for ::1 at 2019-10-15 11:23:48 -0500
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:39:in `current_customer'
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 1]]
+  ↳ app/views/customers/show.html.erb:4
+  Rendered customers/show.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1659)
+Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 0.3ms | Allocations: 7430)
+
+
+Started GET "/customers" for ::1 at 2019-10-15 11:23:53 -0500
+Processing by CustomersController#index as HTML
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/views/customers/index.html.erb:2
+  Rendered customers/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 838)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.2ms | Allocations: 5676)
+
+
+Started GET "/customers/3" for ::1 at 2019-10-15 11:23:54 -0500
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:39:in `current_customer'
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 3]]
+  ↳ app/views/customers/show.html.erb:4
+  Rendered customers/show.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1440)
+Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 0.5ms | Allocations: 6294)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-15 11:24:06 -0500
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  Rendered customers/_form.html.erb (Duration: 42.8ms | Allocations: 7031)
+  Rendered customers/new.html.erb within layouts/application (Duration: 44.3ms | Allocations: 7326)
+Completed 200 OK in 59ms (Views: 58.1ms | ActiveRecord: 0.0ms | Allocations: 11836)
+
+
+Started POST "/customers" for ::1 at 2019-10-15 11:24:22 -0500
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"fZdOyThCPAQ/L8KU6d17ELZJ93M3yjkaVUmPrtMHoBO4hxc/BkWFGJ5mWf/awbIFJBAvH6VngNvvGnP7AmcbCQ==", "customer"=>{"name"=>"Damini"}, "commit"=>"Create Customer"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[36mCustomer Create (0.8ms)[0m  [1m[32mINSERT INTO "customers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Damini"], ["created_at", "2019-10-15 16:24:22.573787"], ["updated_at", "2019-10-15 16:24:22.573787"]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+Redirected to http://localhost:3000/customers/4
+Completed 302 Found in 8ms (ActiveRecord: 1.7ms | Allocations: 2967)
+
+
+Started GET "/customers/4" for ::1 at 2019-10-15 11:24:22 -0500
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:39:in `current_customer'
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 4]]
+  ↳ app/views/customers/show.html.erb:4
+  Rendered customers/show.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1415)
+Completed 200 OK in 15ms (Views: 12.7ms | ActiveRecord: 0.3ms | Allocations: 6269)
+
+
+Started GET "/customers" for ::1 at 2019-10-15 11:24:33 -0500
+Processing by CustomersController#index as HTML
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/views/customers/index.html.erb:2
+  Rendered customers/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 725)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.2ms | Allocations: 5429)
+
+
+Started GET "/customers/4" for ::1 at 2019-10-15 11:24:35 -0500
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:39:in `current_customer'
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 4]]
+  ↳ app/views/customers/show.html.erb:4
+  Rendered customers/show.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1415)
+Completed 200 OK in 22ms (Views: 18.5ms | ActiveRecord: 0.4ms | Allocations: 6268)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-15 11:25:22 -0500
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  Rendered customers/_form.html.erb (Duration: 1.9ms | Allocations: 848)
+  Rendered customers/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 911)
+Completed 200 OK in 10ms (Views: 9.8ms | ActiveRecord: 0.0ms | Allocations: 5273)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-15 11:31:56 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 41.4ms | Allocations: 9675)
+  Rendered customers/new.html.erb within layouts/application (Duration: 42.6ms | Allocations: 9975)
+Completed 200 OK in 64ms (Views: 53.0ms | ActiveRecord: 0.3ms | Allocations: 20101)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-15 11:32:17 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 17.4ms | Allocations: 8422)
+  Rendered customers/new.html.erb within layouts/application (Duration: 17.8ms | Allocations: 8485)
+Completed 200 OK in 39ms (Views: 27.4ms | ActiveRecord: 2.1ms | Allocations: 18120)
+
+
+Started POST "/customers" for ::1 at 2019-10-15 11:32:41 -0500
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"tAlFwl4Fvtkwd1eKlbsafrmOumsA1hLZd4VvhGYWN0txGRw0YAIHxZE+zOGmp9NrK9diB5J7qxjN1pPRt3aMUQ==", "customer"=>{"name"=>"Chandon", "restaurant_ids"=>["", "1", "2"]}, "commit"=>"Create Customer"}
+Completed 500 Internal Server Error in 47227ms (ActiveRecord: 0.0ms | Allocations: 57331)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/customers_controller.rb:19:in `create'
+Started GET "/customers/new" for ::1 at 2019-10-15 11:33:40 -0500
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (1.8ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 536.2ms | Allocations: 2244676)
+  Rendered customers/new.html.erb within layouts/application (Duration: 548.8ms | Allocations: 2333593)
+Completed 200 OK in 1190ms (Views: 803.3ms | ActiveRecord: 55.4ms | Allocations: 5422649)
+
+
+Started POST "/customers" for ::1 at 2019-10-15 11:34:06 -0500
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"ppkGYBjiwgspEhA+AaRM4Lr/aiCTAx/4qRmMO9q5tIxjiV+WJuV7F4hbi1UyuIX1KKayTAGupjkTSnBuC9kPlg==", "customer"=>{"name"=>"Chandon", "restaurant_ids"=>["", "1", "2"]}, "commit"=>"Create Customer"}
+Completed 500 Internal Server Error in 4397ms (ActiveRecord: 0.0ms | Allocations: 277749)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/customers_controller.rb:19:in `create'
+Started GET "/customers/new" for ::1 at 2019-10-15 11:34:17 -0500
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (2.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 148.8ms | Allocations: 907786)
+  Rendered customers/new.html.erb within layouts/application (Duration: 197.5ms | Allocations: 1079192)
+Completed 200 OK in 701ms (Views: 653.2ms | ActiveRecord: 2.5ms | Allocations: 3571779)
+
+
+Started POST "/customers" for ::1 at 2019-10-15 11:34:27 -0500
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"VyDNfE+NJAH2Lb3AdqtgfCcKgUKdpyXYcypgSk6cYsCSMJSKcYqdHVdkJqtFt6lptVNZLg8KnBnJeZwfn/zZ2g==", "customer"=>{"name"=>"Chandon", "restaurant_ids"=>["", "1", "2"]}, "commit"=>"Create Customer"}
+Completed 500 Internal Server Error in 122827ms (ActiveRecord: 0.0ms | Allocations: 288431)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/customers_controller.rb:19:in `create'
+Started GET "/customers/new" for ::1 at 2019-10-15 11:37:18 -0500
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (2.6ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 349.7ms | Allocations: 2371410)
+  Rendered customers/new.html.erb within layouts/application (Duration: 353.5ms | Allocations: 2416654)
+Started GET "/customers/new" for ::1 at 2019-10-15 11:37:22 -0500
+Completed 200 OK in 860ms (Views: 585.5ms | ActiveRecord: 35.3ms | Allocations: 5758894)
+
+
+  [1m[35m (4.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (21.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 371.5ms | Allocations: 2352922)
+  Rendered customers/new.html.erb within layouts/application (Duration: 374.9ms | Allocations: 2398855)
+Completed 200 OK in 834ms (Views: 531.5ms | ActiveRecord: 47.2ms | Allocations: 5544606)
+
+
+Started POST "/customers" for ::1 at 2019-10-15 11:37:30 -0500
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"ON/XVEMALLANBgs09nNbCKFZ867oEgQrQAZtsczHYtr9z46ifQeVrKxPkF/Fb5IdMwArwnq/ver6VZHkHafZwA==", "customer"=>{"name"=>"Chandon", "restaurant_ids"=>["", "1", "2"]}, "commit"=>"Create Customer"}
+  [1m[36mRestaurant Load (0.7ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" IN (?, ?)[0m  [["id", 1], ["id", 2]]
+  ↳ app/controllers/customers_controller.rb:19:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/customers_controller.rb:19:in `create'
+  [1m[36mCustomer Create (1.2ms)[0m  [1m[32mINSERT INTO "customers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Chandon"], ["created_at", "2019-10-15 16:37:58.914628"], ["updated_at", "2019-10-15 16:37:58.914628"]]
+  ↳ app/controllers/customers_controller.rb:19:in `create'
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("restaurant_id", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 1], ["customer_id", 5], ["created_at", "2019-10-15 16:37:58.928850"], ["updated_at", "2019-10-15 16:37:58.928850"]]
+  ↳ app/controllers/customers_controller.rb:19:in `create'
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("restaurant_id", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 2], ["customer_id", 5], ["created_at", "2019-10-15 16:37:58.936049"], ["updated_at", "2019-10-15 16:37:58.936049"]]
+  ↳ app/controllers/customers_controller.rb:19:in `create'
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/customers_controller.rb:19:in `create'
+Redirected to http://localhost:3000/customers/5
+Completed 302 Found in 27936ms (ActiveRecord: 7.7ms | Allocations: 271796)
+
+
+Started GET "/customers/5" for ::1 at 2019-10-15 11:37:58 -0500
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mCustomer Load (0.3ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:41:in `current_customer'
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 5]]
+  ↳ app/views/customers/show.html.erb:4
+  Rendered customers/show.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1978)
+Completed 200 OK in 25ms (Views: 20.1ms | ActiveRecord: 0.5ms | Allocations: 7097)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-15 11:41:48 -0500
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 5.9ms | Allocations: 2015)
+  Rendered customers/new.html.erb within layouts/application (Duration: 6.4ms | Allocations: 2078)
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.2ms | Allocations: 6449)
+
+
+Started POST "/customers" for ::1 at 2019-10-15 11:42:06 -0500
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"/vlS1U9towDFqvVoE97Vpq2UUfjfMpMwUY5SzU1Rnvg76QsjcWoaHGTjbgMgwhyzP82JlE2fKvHr3a6YnDEl4g==", "customer"=>{"name"=>"Alexis", "restaurant_ids"=>["", "2"]}, "commit"=>"Create Customer"}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/customers_controller.rb:19:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/customers_controller.rb:19:in `create'
+  [1m[36mCustomer Create (0.6ms)[0m  [1m[32mINSERT INTO "customers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Alexis"], ["created_at", "2019-10-15 16:42:17.049922"], ["updated_at", "2019-10-15 16:42:17.049922"]]
+  ↳ app/controllers/customers_controller.rb:19:in `create'
+  [1m[36mReview Create (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("restaurant_id", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 2], ["customer_id", 6], ["created_at", "2019-10-15 16:42:17.055774"], ["updated_at", "2019-10-15 16:42:17.055774"]]
+  ↳ app/controllers/customers_controller.rb:19:in `create'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/customers_controller.rb:19:in `create'
+Redirected to http://localhost:3000/customers/6
+Completed 302 Found in 10231ms (ActiveRecord: 2.8ms | Allocations: 7200)
+
+
+Started GET "/customers/6" for ::1 at 2019-10-15 11:42:17 -0500
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:41:in `current_customer'
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 6]]
+  ↳ app/views/customers/show.html.erb:4
+  Rendered customers/show.html.erb within layouts/application (Duration: 6.2ms | Allocations: 1427)
+Completed 200 OK in 15ms (Views: 12.9ms | ActiveRecord: 0.4ms | Allocations: 6280)
+
+
+Started GET "/customers" for ::1 at 2019-10-15 11:43:04 -0500
+Processing by CustomersController#index as HTML
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mCustomer Load (0.3ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/views/customers/index.html.erb:2
+  Rendered customers/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 945)
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.3ms | Allocations: 5781)
+
+
+Started GET "/customers/4" for ::1 at 2019-10-15 11:43:06 -0500
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:41:in `current_customer'
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 4]]
+  ↳ app/views/customers/show.html.erb:4
+  Rendered customers/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1415)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.3ms | Allocations: 6269)
+
+
+Started GET "/customers/4/edit" for ::1 at 2019-10-15 11:43:12 -0500
+Processing by CustomersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:41:in `current_customer'
+  Rendering customers/edit.html.erb within layouts/application
+  Rendered customers/_form.html.erb (Duration: 2.2ms | Allocations: 1742)
+  Rendered customers/edit.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1900)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms | Allocations: 2802)
+
+
+  
+ActionView::Template::Error (undefined method `map' for nil:NilClass):
+    1: <%= form_for @customer do |f| %>
+    2: <%= f.label :name %>
+    3: <%= f.text_field :name %>
+    4: <%= f.collection_check_boxes :restaurant_ids, @restaurants, :id, :name %>
+    5: <%= f.submit %>
+    6: <% end %>
+  
+app/views/customers/_form.html.erb:4
+app/views/customers/_form.html.erb:1
+app/views/customers/edit.html.erb:1
+Started GET "/customers/4/edit" for ::1 at 2019-10-15 11:43:50 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by CustomersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:41:in `current_customer'
+  Rendering customers/edit.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 4]]
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 20.4ms | Allocations: 9160)
+  Rendered customers/edit.html.erb within layouts/application (Duration: 20.7ms | Allocations: 9223)
+Completed 200 OK in 40ms (Views: 27.6ms | ActiveRecord: 2.9ms | Allocations: 19531)
+
+
+Started PATCH "/customers/4" for ::1 at 2019-10-15 11:43:57 -0500
+Processing by CustomersController#update as HTML
+  Parameters: {"authenticity_token"=>"vFnmJZC8QBCiyfTbjPosiCEQ7vNIEI3rQBel4X5dIVnW97mL2R52s+Xai5v2F0WfiLyLMzQ/mQ0gnaGR3Frcmw==", "customer"=>{"name"=>"Damini", "restaurant_ids"=>["", "1", "2"]}, "commit"=>"Update Customer", "id"=>"4"}
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:41:in `current_customer'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/customers_controller.rb:29:in `update'
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" IN (?, ?)[0m  [["id", 1], ["id", 2]]
+  ↳ app/controllers/customers_controller.rb:29:in `update'
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 4]]
+  ↳ app/controllers/customers_controller.rb:29:in `update'
+  [1m[36mReview Create (0.5ms)[0m  [1m[32mINSERT INTO "reviews" ("restaurant_id", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 1], ["customer_id", 4], ["created_at", "2019-10-15 16:43:57.272778"], ["updated_at", "2019-10-15 16:43:57.272778"]]
+  ↳ app/controllers/customers_controller.rb:29:in `update'
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("restaurant_id", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 2], ["customer_id", 4], ["created_at", "2019-10-15 16:43:57.277332"], ["updated_at", "2019-10-15 16:43:57.277332"]]
+  ↳ app/controllers/customers_controller.rb:29:in `update'
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/customers_controller.rb:29:in `update'
+Redirected to http://localhost:3000/customers/4
+Completed 302 Found in 28ms (ActiveRecord: 4.6ms | Allocations: 11062)
+
+
+Started GET "/customers/4" for ::1 at 2019-10-15 11:43:57 -0500
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:41:in `current_customer'
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 4]]
+  ↳ app/views/customers/show.html.erb:4
+  Rendered customers/show.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1450)
+Completed 200 OK in 15ms (Views: 11.2ms | ActiveRecord: 0.8ms | Allocations: 6303)
+
+
+Started GET "/customers/4/edit" for ::1 at 2019-10-15 11:44:03 -0500
+Processing by CustomersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:41:in `current_customer'
+  Rendering customers/edit.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 4]]
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 6.9ms | Allocations: 2768)
+  Rendered customers/edit.html.erb within layouts/application (Duration: 7.5ms | Allocations: 2831)
+Completed 200 OK in 17ms (Views: 14.4ms | ActiveRecord: 0.5ms | Allocations: 7692)
+
+
+Started PATCH "/customers/4" for ::1 at 2019-10-15 11:44:33 -0500
+Processing by CustomersController#update as HTML
+  Parameters: {"authenticity_token"=>"SRgHir4y9oyl8rBhsCMRO/gKSHkKyRrNoLhGaXgJe78jtlgk95DAL+LhzyHKzngsUaYtuXbmDivAMkIZ2g6GfQ==", "customer"=>{"name"=>"Damini", "restaurant_ids"=>["", "1"]}, "commit"=>"Update Customer", "id"=>"4"}
+  [1m[36mCustomer Load (0.3ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:41:in `current_customer'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/customers_controller.rb:29:in `update'
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/customers_controller.rb:29:in `update'
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 4]]
+  ↳ app/controllers/customers_controller.rb:29:in `update'
+  [1m[36mReview Destroy (2.3ms)[0m  [1m[31mDELETE FROM "reviews" WHERE "reviews"."customer_id" = ? AND "reviews"."restaurant_id" = ?[0m  [["customer_id", 4], ["restaurant_id", 2]]
+  ↳ app/controllers/customers_controller.rb:29:in `update'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/customers_controller.rb:29:in `update'
+Redirected to http://localhost:3000/customers/4
+Completed 302 Found in 17ms (ActiveRecord: 4.0ms | Allocations: 5406)
+
+
+Started GET "/customers/4" for ::1 at 2019-10-15 11:44:33 -0500
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCustomer Load (0.6ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:41:in `current_customer'
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.6ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 4]]
+  ↳ app/views/customers/show.html.erb:4
+  Rendered customers/show.html.erb within layouts/application (Duration: 6.3ms | Allocations: 1431)
+Completed 200 OK in 62ms (Views: 57.9ms | ActiveRecord: 1.2ms | Allocations: 6288)
+
+
+Started GET "/customers/4/edit" for ::1 at 2019-10-15 11:44:44 -0500
+Processing by CustomersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:41:in `current_customer'
+  Rendering customers/edit.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 4]]
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 6.2ms | Allocations: 2779)
+  Rendered customers/edit.html.erb within layouts/application (Duration: 6.4ms | Allocations: 2842)
+Completed 200 OK in 13ms (Views: 10.9ms | ActiveRecord: 0.4ms | Allocations: 7703)
+
+
