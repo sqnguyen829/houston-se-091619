@@ -6,16 +6,14 @@ class CustomersController < ApplicationController
   end
 
   def show
-
   end
 
   def new
-    @customer = Customer.new
     @restaurants = Restaurant.all
   end
 
   def create
-    byebug
+    # byebug
     @customer = Customer.create(customers_params)
     redirect_to @customer
 
