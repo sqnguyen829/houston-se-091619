@@ -15,6 +15,7 @@ GEM
     arel (9.0.0)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
+<<<<<<< HEAD
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     http-cookie (1.0.3)
@@ -26,6 +27,20 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2018.0812)
     minitest (5.12.0)
+=======
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
+    http-accept (1.7.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    i18n (1.7.0)
+      concurrent-ruby (~> 1.0)
+    method_source (0.9.2)
+    mime-types (3.3)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2019.0904)
+    minitest (5.12.2)
+>>>>>>> 31a1c96260bd5a286cdb42551fc70c9f818f5c26
     mustermann (1.0.3)
     netrc (0.11.0)
     pry (0.12.2)
@@ -36,7 +51,12 @@ GEM
       rack
     rake (13.0.0)
     require_all (2.0.0)
+<<<<<<< HEAD
     rest-client (2.0.2)
+=======
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
+>>>>>>> 31a1c96260bd5a286cdb42551fc70c9f818f5c26
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
@@ -57,7 +77,11 @@ GEM
       thread_safe (~> 0.1)
     unf (0.1.4)
       unf_ext
+<<<<<<< HEAD
     unf_ext (0.0.7.5)
+=======
+    unf_ext (0.0.7.6)
+>>>>>>> 31a1c96260bd5a286cdb42551fc70c9f818f5c26
 
 PLATFORMS
   ruby
