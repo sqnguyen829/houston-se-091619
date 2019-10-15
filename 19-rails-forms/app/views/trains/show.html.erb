@@ -1,0 +1,17 @@
+<li> Destination: <%= @train.destination %></li>
+<li> Time: <%= @train.time %></li>
+<li> Driver: <%=@train.driver.name %> </li>
+
+<!-- <form action="/trains/<%= @train.id %>" method="post">
+    <input type="hidden" name="_method" value="delete"/>
+    <input type="submit" value="delete train"/>
+</form> -->
+
+<!-- <%= form_with model: @train do |f|%>
+<%= f.text_field :destination %>
+<% end %> -->
+
+<%= form_for @train, method: :delete do |f| %>
+<%= f.submit "Delete Train" %>
+<% end %>
+
