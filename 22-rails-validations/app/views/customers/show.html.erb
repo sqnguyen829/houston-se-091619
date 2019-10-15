@@ -1,0 +1,18 @@
+<li> Name: <%= @restaurant.name %></li>
+<li> Cuisine: <%= @restaurant.cuisine %></li>
+
+<p>
+    Customers:
+    <% @restaurant.customers.each do |customer| %>
+    <li>
+        <%= customer.name %>
+    </li>
+    <% end %>
+    
+</p>
+
+
+<%= form_for @restaurant, method: :delete do |f| %>
+<%= f.submit "Delete Restaurant" %>
+<% end %>
+
