@@ -14,13 +14,21 @@ class CustomersController < ApplicationController
   end
 
   def create
-    @customer = Customer.create(customers_params)
-    # byebug
-    redirect_to @customer
+    @customer = Customer.new(customers_params)
+
+
+    if @customer.valid?
+        @customer.save
+        redirect_to customer_path(@customer)
+    else
+      # byebug
+      flash[:errors] = @customer.errors.full_messages
+      redirect_to new_customer_path
+    end
   end
 
   def edit
-    @restaurants = Restaurant.all
+    @customer = Customer.find(params[:id])
   end
 
   def update

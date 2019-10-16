@@ -1100,3 +1100,531 @@ Processing by CustomersController#new as HTML
 Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.1ms | Allocations: 6405)
 
 
+Started GET "/" for ::1 at 2019-10-16 09:11:40 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/jyao/.rvm/gems/ruby-2.6.1/gems/railties-6.0.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/jyao/.rvm/gems/ruby-2.6.1/gems/railties-6.0.0/lib/rails/templates/rails/welcome/index.html.erb (Duration: 19.9ms | Allocations: 316)
+Completed 200 OK in 24ms (Views: 21.8ms | ActiveRecord: 0.0ms | Allocations: 1610)
+
+
+Started GET "/customers" for ::1 at 2019-10-16 09:11:46 -0500
+Processing by CustomersController#index as HTML
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/views/customers/index.html.erb:2
+  Rendered customers/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 3927)
+Completed 200 OK in 176ms (Views: 169.2ms | ActiveRecord: 0.7ms | Allocations: 296260)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-16 09:11:52 -0500
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 21.0ms | Allocations: 13021)
+  Rendered customers/new.html.erb within layouts/application (Duration: 21.9ms | Allocations: 13328)
+Completed 200 OK in 30ms (Views: 24.9ms | ActiveRecord: 1.2ms | Allocations: 19161)
+
+
+Started POST "/customers" for ::1 at 2019-10-16 09:11:55 -0500
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"GoRA/WFMi93ZTOYToQYu+TSZboh6xrcvHfJUlnquqNuqDc3y0kdLLz8HLLZPgWcZcPF6CuMhsEzLopUxCPkbjw==", "customer"=>{"name"=>"", "restaurant_ids"=>["", "3"]}, "commit"=>"Create Customer"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[36mCustomer Create (0.5ms)[0m  [1m[32mINSERT INTO "customers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", ""], ["created_at", "2019-10-16 14:11:55.785248"], ["updated_at", "2019-10-16 14:11:55.785248"]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("restaurant_id", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 3], ["customer_id", 11], ["created_at", "2019-10-16 14:11:55.787798"], ["updated_at", "2019-10-16 14:11:55.787798"]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+Redirected to http://localhost:3000/customers/11
+Completed 302 Found in 32806ms (ActiveRecord: 2.4ms | Allocations: 70375)
+
+
+Started GET "/customers" for ::1 at 2019-10-16 09:12:28 -0500
+Started GET "/customers" for ::1 at 2019-10-16 09:12:28 -0500
+Processing by CustomersController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+Processing by CustomersController#index as HTML
+  ↳ app/views/customers/index.html.erb:2
+  Rendering customers/index.html.erb within layouts/application
+  Rendered customers/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1155)
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/views/customers/index.html.erb:2
+  Rendered customers/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1145)
+Completed 200 OK in 16ms (Views: 15.1ms | ActiveRecord: 0.1ms | Allocations: 10899)
+
+
+Completed 200 OK in 16ms (Views: 15.2ms | ActiveRecord: 0.2ms | Allocations: 10324)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" ORDER BY "customers"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCustomer Load (0.6ms)[0m  [1m[34mSELECT "customers".* FROM "customers" ORDER BY "customers"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Destroy (0.9ms)[0m  [1m[31mDELETE FROM "customers" WHERE "customers"."id" = ?[0m  [["id", 11]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mCustomer Load (0.4ms)[0m  [1m[34mSELECT "customers".* FROM "customers" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/customers" for ::1 at 2019-10-16 09:13:15 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CustomersController#index as HTML
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/views/customers/index.html.erb:2
+  Rendered customers/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 4051)
+Completed 200 OK in 161ms (Views: 156.6ms | ActiveRecord: 0.6ms | Allocations: 296935)
+
+
+Started GET "/customers" for ::1 at 2019-10-16 09:40:22 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CustomersController#index as HTML
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/views/customers/index.html.erb:2
+  Rendered customers/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 3768)
+Completed 200 OK in 151ms (Views: 147.0ms | ActiveRecord: 0.6ms | Allocations: 295938)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-16 09:40:26 -0500
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 19.2ms | Allocations: 13008)
+  Rendered customers/new.html.erb within layouts/application (Duration: 20.0ms | Allocations: 13315)
+Completed 200 OK in 27ms (Views: 22.8ms | ActiveRecord: 1.1ms | Allocations: 19148)
+
+
+Started POST "/customers" for ::1 at 2019-10-16 09:40:33 -0500
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"zRXHj5VmbfYWDFJyOiwYLSyEysd1XIk1efSMP40K1699nEqAJm2tBPBHmNfUq1HNaOzeRey7jlavpE2Y/11k+w==", "customer"=>{"name"=>"Test", "restaurant_ids"=>["", "3"]}, "commit"=>"Create Customer"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[36mCustomer Create (0.4ms)[0m  [1m[32mINSERT INTO "customers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Test"], ["created_at", "2019-10-16 14:40:33.344921"], ["updated_at", "2019-10-16 14:40:33.344921"]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[36mReview Create (0.1ms)[0m  [1m[32mINSERT INTO "reviews" ("restaurant_id", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 3], ["customer_id", 12], ["created_at", "2019-10-16 14:40:33.347326"], ["updated_at", "2019-10-16 14:40:33.347326"]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+Redirected to http://localhost:3000/customers/12
+Completed 302 Found in 15ms (ActiveRecord: 2.4ms | Allocations: 9388)
+
+
+Started GET "/customers/12" for ::1 at 2019-10-16 09:40:33 -0500
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:39:in `current_customer'
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 12]]
+  ↳ app/views/customers/show.html.erb:4
+  Rendered customers/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1816)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.4ms | Allocations: 7020)
+
+
+Started DELETE "/customers/12" for ::1 at 2019-10-16 09:40:34 -0500
+Processing by CustomersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Jyac+/JXNFnkosSdGJ5gT5jw5XSuSx1IKOlI4sV/EM9ow2qGtfH1d7aOsOD4FO8SlwchjwzJdFvwGZHld07RUA==", "commit"=>"Delete Customer", "id"=>"12"}
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:39:in `current_customer'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/customers_controller.rb:32:in `destroy'
+  [1m[36mCustomer Destroy (0.4ms)[0m  [1m[31mDELETE FROM "customers" WHERE "customers"."id" = ?[0m  [["id", 12]]
+  ↳ app/controllers/customers_controller.rb:32:in `destroy'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/customers_controller.rb:32:in `destroy'
+Redirected to http://localhost:3000/customers
+Completed 302 Found in 5ms (ActiveRecord: 1.6ms | Allocations: 2570)
+
+
+Started GET "/customers" for ::1 at 2019-10-16 09:40:34 -0500
+Processing by CustomersController#index as HTML
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/views/customers/index.html.erb:2
+  Rendered customers/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 686)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.1ms | Allocations: 5311)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-16 09:40:39 -0500
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 2.6ms | Allocations: 1856)
+  Rendered customers/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1919)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.1ms | Allocations: 6369)
+
+
+Started GET "/customers" for ::1 at 2019-10-16 09:40:43 -0500
+Processing by CustomersController#index as HTML
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/views/customers/index.html.erb:2
+  Rendered customers/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 685)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.2ms | Allocations: 5300)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-16 09:41:59 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 26.7ms | Allocations: 13356)
+  Rendered customers/new.html.erb within layouts/application (Duration: 27.8ms | Allocations: 14063)
+Completed 200 OK in 165ms (Views: 157.2ms | ActiveRecord: 1.0ms | Allocations: 310467)
+
+
+Started POST "/customers" for ::1 at 2019-10-16 09:42:09 -0500
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"DE3rYdWUnYwLrlWOM2nmnLqbpgnK736xfsirc76Ts3u8xGZuZp9dfu3lnyvd7q98/vOyi1MIedKomGrUzMQALw==", "customer"=>{"name"=>"", "restaurant_ids"=>["", "3"]}, "commit"=>"Create Customer"}
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[36mCustomer Create (0.4ms)[0m  [1m[32mINSERT INTO "customers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", ""], ["created_at", "2019-10-16 14:42:09.068504"], ["updated_at", "2019-10-16 14:42:09.068504"]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[36mReview Create (0.1ms)[0m  [1m[32mINSERT INTO "reviews" ("restaurant_id", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 3], ["customer_id", 13], ["created_at", "2019-10-16 14:42:09.070536"], ["updated_at", "2019-10-16 14:42:09.070536"]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" ORDER BY "customers"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Destroy (0.4ms)[0m  [1m[31mDELETE FROM "customers" WHERE "customers"."id" = ?[0m  [["id", 13]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mCustomer Load (0.3ms)[0m  [1m[34mSELECT "customers".* FROM "customers" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/customers" for ::1 at 2019-10-16 09:42:59 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CustomersController#index as HTML
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/views/customers/index.html.erb:2
+  Rendered customers/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 4078)
+Completed 200 OK in 152ms (Views: 148.3ms | ActiveRecord: 0.5ms | Allocations: 296940)
+
+
+Started GET "/customers" for ::1 at 2019-10-16 10:05:29 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CustomersController#index as HTML
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/views/customers/index.html.erb:2
+  Rendered customers/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 4034)
+Completed 200 OK in 216ms (Views: 211.1ms | ActiveRecord: 0.5ms | Allocations: 296777)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-16 10:05:35 -0500
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 19.8ms | Allocations: 13015)
+  Rendered customers/new.html.erb within layouts/application (Duration: 20.6ms | Allocations: 13322)
+Completed 200 OK in 29ms (Views: 23.8ms | ActiveRecord: 1.2ms | Allocations: 19155)
+
+
+Started POST "/customers" for ::1 at 2019-10-16 10:06:08 -0500
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"OsMAFMBSbPvIJsfdOGsRFtaf33bDRzK+QoAeGJsOIfOKSo0bc1msCS5tDXjW7Fj2kvfL9FqgNd2U0N+/6VmSpw==", "customer"=>{"name"=>"", "restaurant_ids"=>["", "3", "4"]}, "commit"=>"Create Customer"}
+  [1m[36mRestaurant Load (0.6ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" IN (?, ?)[0m  [["id", 3], ["id", 4]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[36mCustomer Create (0.5ms)[0m  [1m[32mINSERT INTO "customers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", ""], ["created_at", "2019-10-16 15:06:08.086609"], ["updated_at", "2019-10-16 15:06:08.086609"]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[36mReview Create (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("restaurant_id", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 3], ["customer_id", 14], ["created_at", "2019-10-16 15:06:08.089210"], ["updated_at", "2019-10-16 15:06:08.089210"]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[36mReview Create (0.1ms)[0m  [1m[32mINSERT INTO "reviews" ("restaurant_id", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 4], ["customer_id", 14], ["created_at", "2019-10-16 15:06:08.090772"], ["updated_at", "2019-10-16 15:06:08.090772"]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+Redirected to http://localhost:3000/customers/14
+Completed 302 Found in 21290ms (ActiveRecord: 2.7ms | Allocations: 41272)
+
+
+Started GET "/customers/14" for ::1 at 2019-10-16 10:06:29 -0500
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:39:in `current_customer'
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 14]]
+  ↳ app/views/customers/show.html.erb:4
+  Rendered customers/show.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1830)
+Completed 200 OK in 10ms (Views: 6.9ms | ActiveRecord: 0.5ms | Allocations: 7038)
+
+
+Started GET "/customers" for ::1 at 2019-10-16 10:06:38 -0500
+Processing by CustomersController#index as HTML
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/views/customers/index.html.erb:2
+  Rendered customers/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 732)
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.2ms | Allocations: 5362)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" ORDER BY "customers"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Destroy (0.5ms)[0m  [1m[31mDELETE FROM "customers" WHERE "customers"."id" = ?[0m  [["id", 14]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/customers" for ::1 at 2019-10-16 10:10:20 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CustomersController#index as HTML
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/views/customers/index.html.erb:2
+  Rendered customers/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 3768)
+Completed 200 OK in 194ms (Views: 189.7ms | ActiveRecord: 0.7ms | Allocations: 296044)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-16 10:11:34 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 14.4ms | Allocations: 12926)
+  Rendered customers/new.html.erb within layouts/application (Duration: 15.1ms | Allocations: 13231)
+Completed 200 OK in 27ms (Views: 18.2ms | ActiveRecord: 1.5ms | Allocations: 23248)
+
+
+Started POST "/customers" for ::1 at 2019-10-16 10:11:42 -0500
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"F++G/fOmptwoDdns697FoQ5eu9AQYMO5Uc8rjKyhCDCnZgvyQK1mLs5GE0kFWYxBSjavUomHxNqHn+or3va7ZA==", "customer"=>{"name"=>"Test", "restaurant_ids"=>["", "3"]}, "commit"=>"Create Customer"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[36mCustomer Create (0.4ms)[0m  [1m[32mINSERT INTO "customers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Test"], ["created_at", "2019-10-16 15:11:42.769868"], ["updated_at", "2019-10-16 15:11:42.769868"]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[36mReview Create (0.1ms)[0m  [1m[32mINSERT INTO "reviews" ("restaurant_id", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 3], ["customer_id", 15], ["created_at", "2019-10-16 15:11:42.772430"], ["updated_at", "2019-10-16 15:11:42.772430"]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+Redirected to http://localhost:3000/customers/15
+Completed 302 Found in 20202ms (ActiveRecord: 2.0ms | Allocations: 39686)
+
+
+Started GET "/customers/15" for ::1 at 2019-10-16 10:12:02 -0500
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:39:in `current_customer'
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 15]]
+  ↳ app/views/customers/show.html.erb:4
+  Rendered customers/show.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1815)
+Completed 200 OK in 10ms (Views: 7.6ms | ActiveRecord: 0.5ms | Allocations: 7034)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-16 10:12:06 -0500
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 3.6ms | Allocations: 1869)
+  Rendered customers/new.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1933)
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 0.1ms | Allocations: 6396)
+
+
+Started POST "/customers" for ::1 at 2019-10-16 10:12:14 -0500
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"QIVBSJiyweski80WuyaMfKxZNWhMDgQZby/N9tm3fbHwDMxHK7kBGcLAB7NVocWc6DEh6tXpA3q5fwxRq+DO5Q==", "customer"=>{"name"=>"", "restaurant_ids"=>["", "3"]}, "commit"=>"Create Customer"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+Redirected to http://localhost:3000/customers
+Completed 302 Found in 80478ms (ActiveRecord: 0.2ms | Allocations: 6216)
+
+
+Started GET "/customers" for ::1 at 2019-10-16 10:13:35 -0500
+Processing by CustomersController#index as HTML
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/views/customers/index.html.erb:2
+  Rendered customers/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 736)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.2ms | Allocations: 5352)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-16 10:17:12 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 18.1ms | Allocations: 13066)
+  Rendered customers/new.html.erb within layouts/application (Duration: 39.4ms | Allocations: 13485)
+Completed 200 OK in 184ms (Views: 174.9ms | ActiveRecord: 1.3ms | Allocations: 309806)
+
+
+Started POST "/customers" for ::1 at 2019-10-16 10:17:45 -0500
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"4qApz1HFj7yZbTx0AiV0hDlXt/ZvOZrVqHejykAoPHtSKaTA4s5PTn8m9tHsoj1kfT+jdPbenbZ+J2JtMn+PLw==", "customer"=>{"name"=>"Fernando", "restaurant_ids"=>["", "4"]}, "commit"=>"Create Customer"}
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/customers_controller.rb:21:in `create'
+  [1m[36mCustomer Create (0.4ms)[0m  [1m[32mINSERT INTO "customers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Fernando"], ["created_at", "2019-10-16 15:17:45.475736"], ["updated_at", "2019-10-16 15:17:45.475736"]]
+  ↳ app/controllers/customers_controller.rb:21:in `create'
+  [1m[36mReview Create (0.1ms)[0m  [1m[32mINSERT INTO "reviews" ("restaurant_id", "customer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 4], ["customer_id", 16], ["created_at", "2019-10-16 15:17:45.477665"], ["updated_at", "2019-10-16 15:17:45.477665"]]
+  ↳ app/controllers/customers_controller.rb:21:in `create'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/customers_controller.rb:21:in `create'
+Redirected to http://localhost:3000/customers/16
+Completed 302 Found in 24ms (ActiveRecord: 2.6ms | Allocations: 20021)
+
+
+Started GET "/customers/16" for ::1 at 2019-10-16 10:17:45 -0500
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/customers_controller.rb:45:in `current_customer'
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "reviews" ON "restaurants"."id" = "reviews"."restaurant_id" WHERE "reviews"."customer_id" = ?[0m  [["customer_id", 16]]
+  ↳ app/views/customers/show.html.erb:4
+  Rendered customers/show.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1869)
+Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 0.3ms | Allocations: 7239)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-16 10:17:52 -0500
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 2.9ms | Allocations: 1876)
+  Rendered customers/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1940)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.2ms | Allocations: 6403)
+
+
+Started POST "/customers" for ::1 at 2019-10-16 10:18:06 -0500
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"7Qsl2EmDmxbuYrnJQm2FV5kh68tAG6IMT2EgyIMPDRRdgqjX+ohb5Agpc2ys6sy33Un/Sdn8pW+ZMeFv8Vi+QA==", "customer"=>{"name"=>"", "restaurant_ids"=>["", "3", "4"]}, "commit"=>"Create Customer"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" IN (?, ?)[0m  [["id", 3], ["id", 4]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+Redirected to http://localhost:3000/customers/new
+Completed 302 Found in 4ms (ActiveRecord: 0.2ms | Allocations: 2553)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-16 10:18:06 -0500
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 2.7ms | Allocations: 1851)
+  Rendered customers/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1914)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.1ms | Allocations: 6364)
+
+
+Started POST "/customers" for ::1 at 2019-10-16 10:18:38 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"C3A5npKPzpENwNZCF/lwQccUYheHtu3vtZA9Mj4OfZW7+bSRIYQOY+uLHOf5fjmhg3x2lR5R6oxjwPyVTFnOwQ==", "customer"=>{"name"=>"", "restaurant_ids"=>["", "3", "4"]}, "commit"=>"Create Customer"}
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" IN (?, ?)[0m  [["id", 3], ["id", 4]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+Started GET "/" for ::1 at 2019-10-16 10:19:34 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/jyao/.rvm/gems/ruby-2.6.1/gems/railties-6.0.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/jyao/.rvm/gems/ruby-2.6.1/gems/railties-6.0.0/lib/rails/templates/rails/welcome/index.html.erb (Duration: 28.9ms | Allocations: 316)
+Completed 200 OK in 36ms (Views: 30.6ms | ActiveRecord: 0.0ms | Allocations: 2315)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-16 10:19:37 -0500
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 26.2ms | Allocations: 13031)
+  Rendered customers/new.html.erb within layouts/application (Duration: 29.9ms | Allocations: 13581)
+Completed 200 OK in 221ms (Views: 208.9ms | ActiveRecord: 2.1ms | Allocations: 309178)
+
+
+Started POST "/customers" for ::1 at 2019-10-16 10:19:42 -0500
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"h8TpTCTwevXVKsXGOrWo9uI1O6nXZL/uMHn0sPi11103TWRDl/u6BzNhD2PUMuEWpl0vK06DuI3mKTUXiuJkCQ==", "customer"=>{"name"=>"", "restaurant_ids"=>["", "3"]}, "commit"=>"Create Customer"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+Redirected to http://localhost:3000/customers/new
+Completed 302 Found in 134724ms (ActiveRecord: 0.5ms | Allocations: 37759)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-16 10:21:56 -0500
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:4
+  Rendered customers/_form.html.erb (Duration: 3.3ms | Allocations: 1864)
+  Rendered customers/new.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1928)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.2ms | Allocations: 6382)
+
+
+Started POST "/customers" for ::1 at 2019-10-16 10:28:26 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"JL1tKuJYF3G/1FLl3EO++l9bHqCYvFIj0fC8G1uWOv6UNOAlUVPXg1mfmEAyxPcaGzMKIgFbVUAHoH28KcGJqg==", "customer"=>{"name"=>"", "restaurant_ids"=>["", "3", "4"]}, "commit"=>"Create Customer"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" IN (?, ?)[0m  [["id", 3], ["id", 4]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+Redirected to http://localhost:3000/customers/new
+Completed 302 Found in 19ms (ActiveRecord: 0.4ms | Allocations: 15799)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-16 10:28:26 -0500
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:12
+  Rendered customers/_form.html.erb (Duration: 3.3ms | Allocations: 2169)
+  Rendered customers/new.html.erb within layouts/application (Duration: 3.9ms | Allocations: 2469)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.2ms | Allocations: 7834)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-16 10:29:17 -0500
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:12
+  Rendered customers/_form.html.erb (Duration: 4.8ms | Allocations: 2133)
+  Rendered customers/new.html.erb within layouts/application (Duration: 5.6ms | Allocations: 2424)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.2ms | Allocations: 7779)
+
+
+Started POST "/customers" for ::1 at 2019-10-16 10:29:20 -0500
+Processing by CustomersController#create as HTML
+  Parameters: {"authenticity_token"=>"N7APzOf62iwiAbqj9fuC2s/C+6I6QZ93nby+cg0viBSHOYLDVPEa3sRKcAYbfMs6i6rvIKOmmBRL7H/Vf3g7QA==", "customer"=>{"name"=>"", "restaurant_ids"=>["", "3"]}, "commit"=>"Create Customer"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/customers_controller.rb:17:in `create'
+Redirected to http://localhost:3000/customers/new
+Completed 302 Found in 5ms (ActiveRecord: 0.2ms | Allocations: 2308)
+
+
+Started GET "/customers/new" for ::1 at 2019-10-16 10:29:20 -0500
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/customers/_form.html.erb:12
+  Rendered customers/_form.html.erb (Duration: 2.5ms | Allocations: 1889)
+  Rendered customers/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1953)
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.1ms | Allocations: 6408)
+
+
