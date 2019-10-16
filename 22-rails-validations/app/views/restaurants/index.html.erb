@@ -1,6 +1,6 @@
-<h1>Customers:</h1>
-<% @customers.each do |customer| %>
+<h1>Restaurants:</h1>
+<% @restaurants.each do |restaurant| %>
 <li>
-    <%= link_to customer.name, customer_path(customer) %>
+    <%= link_to restaurant.name, restaurant_path(restaurant) %>
  </li>
 <% end %>

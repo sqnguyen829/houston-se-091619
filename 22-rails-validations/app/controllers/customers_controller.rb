@@ -9,14 +9,14 @@ class CustomersController < ApplicationController
   end
 
   def new
+    @customer = Customer.new
     @restaurants = Restaurant.all
   end
 
   def create
-    # byebug
     @customer = Customer.create(customers_params)
+    # byebug
     redirect_to @customer
-
   end
 
   def edit
@@ -30,7 +30,7 @@ class CustomersController < ApplicationController
 
   def destroy
     @customer.destroy
-    redirect_to custpomers_path
+    redirect_to customers_path
   end
 
   private
