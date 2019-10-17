@@ -1,0 +1,15 @@
+<h1>This is the show page</h1>
+<h1><%=@student.name%></h1>
+<h3><%=@student.major%></h3>
+<h3><%=@student.age%></h3>
+
+
+<h1> Instructor : <%= @student.instructor.name%></h1>
+
+<%= link_to 'delete', url_for(action: :destroy, id: @student.id), method: :delete, data: {confirm: 'Please,  no'}%>
+
+
+
+
+
+
