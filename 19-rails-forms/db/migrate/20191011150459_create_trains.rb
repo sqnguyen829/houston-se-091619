@@ -3,6 +3,7 @@ class CreateTrains < ActiveRecord::Migration[6.0]
     create_table :trains do |t|
       t.string :destination
       t.integer :time
+      t.integer :driver_id
 
       t.timestamps
     end

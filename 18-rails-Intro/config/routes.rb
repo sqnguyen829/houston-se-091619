@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   #list of all the trains
   get '/trains', to: 'trains#index' 
 
-  #show a single train info
-  get '/tarins/:id', to: 'trains#show'
-
   #form for creating a new train
-  get '/tarins/new' , to: 'trains#new'
+  get '/trains/new' , to: 'trains#new'
+
+  #show a single train info
+  get '/trains/:id', to: 'trains#show'
 
   #create a new train
   post '/trains', to: 'trains#create'

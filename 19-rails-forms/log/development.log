@@ -1384,3 +1384,397 @@ ArgumentError (Before process_action callback :current_train has not been define
   
 app/controllers/trains_controller.rb:6:in `<class:TrainsController>'
 app/controllers/trains_controller.rb:1:in `<main>'
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTrains (20191011150459)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "trains" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "destination" varchar, "time" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191011150459"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCats (20191011155916)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "cats" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "age" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191011155916"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDrivers (20191015142657)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "drivers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191015142657"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-10-15 14:28:56.475517"], ["updated_at", "2019-10-15 14:28:56.475517"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTrain Load (0.3ms)[0m  [1m[34mSELECT "trains".* FROM "trains"[0m
+  [1m[36mDriver Load (0.6ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers"[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Create (0.6ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "John"], ["created_at", "2019-10-15 14:36:22.370412"], ["updated_at", "2019-10-15 14:36:22.370412"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Create (0.2ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Nick"], ["created_at", "2019-10-15 14:36:22.373970"], ["updated_at", "2019-10-15 14:36:22.373970"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Create (0.2ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "David"], ["created_at", "2019-10-15 14:36:22.376689"], ["updated_at", "2019-10-15 14:36:22.376689"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTrain Load (0.1ms)[0m  [1m[34mSELECT "trains".* FROM "trains"[0m
+  [1m[36mDriver Load (0.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Destroy (0.4ms)[0m  [1m[31mDELETE FROM "drivers" WHERE "drivers"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Destroy (0.2ms)[0m  [1m[31mDELETE FROM "drivers" WHERE "drivers"."id" = ?[0m  [["id", 2]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Destroy (0.2ms)[0m  [1m[31mDELETE FROM "drivers" WHERE "drivers"."id" = ?[0m  [["id", 3]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Create (0.2ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "John"], ["created_at", "2019-10-15 14:36:34.225205"], ["updated_at", "2019-10-15 14:36:34.225205"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Create (0.2ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Nick"], ["created_at", "2019-10-15 14:36:34.228062"], ["updated_at", "2019-10-15 14:36:34.228062"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Create (0.2ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "David"], ["created_at", "2019-10-15 14:36:34.230751"], ["updated_at", "2019-10-15 14:36:34.230751"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTrains (20191011150459)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "trains" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "destination" varchar, "time" integer, "driver_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191011150459"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCats (20191011155916)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "cats" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "age" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191011155916"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDrivers (20191015142657)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "drivers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191015142657"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-10-15 14:37:45.411248"], ["updated_at", "2019-10-15 14:37:45.411248"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mDriver Load (0.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers"[0m
+  [1m[36mTrain Load (0.1ms)[0m  [1m[34mSELECT "trains".* FROM "trains"[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Create (0.3ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "John"], ["created_at", "2019-10-15 14:37:49.120696"], ["updated_at", "2019-10-15 14:37:49.120696"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Create (0.2ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Nick"], ["created_at", "2019-10-15 14:37:49.124185"], ["updated_at", "2019-10-15 14:37:49.124185"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Create (0.2ms)[0m  [1m[32mINSERT INTO "drivers" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "David"], ["created_at", "2019-10-15 14:37:49.126901"], ["updated_at", "2019-10-15 14:37:49.126901"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Load (0.2ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrain Create (0.3ms)[0m  [1m[32mINSERT INTO "trains" ("destination", "time", "driver_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["destination", "Boston"], ["time", 3], ["driver_id", 1], ["created_at", "2019-10-15 14:37:49.165266"], ["updated_at", "2019-10-15 14:37:49.165266"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Load (0.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTrain Create (0.3ms)[0m  [1m[32mINSERT INTO "trains" ("destination", "time", "driver_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["destination", "Cal"], ["time", 13], ["driver_id", 2], ["created_at", "2019-10-15 14:37:49.169467"], ["updated_at", "2019-10-15 14:37:49.169467"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Load (0.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrain Create (0.2ms)[0m  [1m[32mINSERT INTO "trains" ("destination", "time", "driver_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["destination", "NYC"], ["time", 20], ["driver_id", 1], ["created_at", "2019-10-15 14:37:49.173600"], ["updated_at", "2019-10-15 14:37:49.173600"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Load (0.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTrain Create (0.2ms)[0m  [1m[32mINSERT INTO "trains" ("destination", "time", "driver_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["destination", "Austin"], ["time", 10], ["driver_id", 3], ["created_at", "2019-10-15 14:37:49.177192"], ["updated_at", "2019-10-15 14:37:49.177192"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Load (0.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTrain Create (0.2ms)[0m  [1m[32mINSERT INTO "trains" ("destination", "time", "driver_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["destination", "Houston"], ["time", 5], ["driver_id", 1], ["created_at", "2019-10-15 14:37:49.181257"], ["updated_at", "2019-10-15 14:37:49.181257"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mDriver Load (0.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mTrain Load (0.3ms)[0m  [1m[34mSELECT "trains".* FROM "trains" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/" for ::1 at 2019-10-15 09:55:45 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/jyao/.rvm/gems/ruby-2.6.1/gems/railties-6.0.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/jyao/.rvm/gems/ruby-2.6.1/gems/railties-6.0.0/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.4ms | Allocations: 481)
+Completed 200 OK in 30ms (Views: 16.4ms | ActiveRecord: 0.0ms | Allocations: 2750)
+
+
+Started GET "/trains/new" for ::1 at 2019-10-15 09:55:51 -0500
+Processing by TrainsController#new as HTML
+  Rendering trains/new.html.erb within layouts/application
+  Rendered trains/_form.html.erb (Duration: 26.5ms | Allocations: 4968)
+  Rendered trains/new.html.erb within layouts/application (Duration: 29.8ms | Allocations: 5391)
+Completed 200 OK in 51ms (Views: 33.0ms | ActiveRecord: 0.6ms | Allocations: 12038)
+
+
+Started GET "/trains/new" for ::1 at 2019-10-15 10:03:34 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by TrainsController#new as HTML
+  Rendering trains/new.html.erb within layouts/application
+  [1m[36mDriver Load (0.8ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers"[0m
+  ↳ app/views/trains/_form.html.erb:7
+  Rendered trains/_form.html.erb (Duration: 11.1ms | Allocations: 4624)
+  Rendered trains/new.html.erb within layouts/application (Duration: 11.9ms | Allocations: 4922)
+Completed 200 OK in 25ms (Views: 12.8ms | ActiveRecord: 1.3ms | Allocations: 11265)
+
+
+Started GET "/trains" for ::1 at 2019-10-15 10:09:31 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by TrainsController#index as HTML
+  Rendering trains/index.html.erb within layouts/application
+  [1m[36mTrain Load (0.7ms)[0m  [1m[34mSELECT "trains".* FROM "trains"[0m
+  ↳ app/views/trains/index.html.erb:2
+  Rendered trains/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 988)
+Completed 200 OK in 7ms (Views: 3.9ms | ActiveRecord: 0.7ms | Allocations: 1595)
+
+
+Started GET "/trains/5" for ::1 at 2019-10-15 10:09:35 -0500
+Processing by TrainsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mTrain Load (0.2ms)[0m  [1m[34mSELECT "trains".* FROM "trains" WHERE "trains"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/trains_controller.rb:49:in `current_train'
+  Rendering trains/show.html.erb within layouts/application
+  [1m[36mDriver Load (0.5ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/trains/show.html.erb:3
+  Rendered trains/show.html.erb within layouts/application (Duration: 9.4ms | Allocations: 3163)
+Completed 200 OK in 21ms (Views: 9.4ms | ActiveRecord: 0.7ms | Allocations: 6804)
+
+
+Started POST "/trains" for ::1 at 2019-10-15 10:09:56 -0500
+Processing by TrainsController#create as HTML
+  Parameters: {"authenticity_token"=>"fyZc1h6Pa2a2Qp3+tdFH7QfZUqwkYcIdEKafz9XN0KpCKfZScwSN1n76DK59cVItWHtXXTMl3GSKekJzZPrAow==", "train"=>{"destination"=>"LA", "time"=>"12", "driver_id"=>"3"}, "commit"=>"Create Train"}
+[31mUnpermitted parameter: :driver_id[0m
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1622)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"trains", :id=>nil}, missing required keys: [:id]):
+  
+app/controllers/trains_controller.rb:23:in `create'
+Started POST "/trains" for ::1 at 2019-10-15 10:10:43 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by TrainsController#create as HTML
+  Parameters: {"authenticity_token"=>"fyZc1h6Pa2a2Qp3+tdFH7QfZUqwkYcIdEKafz9XN0KpCKfZScwSN1n76DK59cVItWHtXXTMl3GSKekJzZPrAow==", "train"=>{"destination"=>"LA", "time"=>"12", "driver_id"=>"3"}, "commit"=>"Create Train"}
+[31mUnpermitted parameter: :driver_id[0m
+Redirected to http://localhost:3000/trains
+Completed 302 Found in 22ms (ActiveRecord: 0.6ms | Allocations: 6872)
+
+
+Started GET "/trains" for ::1 at 2019-10-15 10:10:43 -0500
+Processing by TrainsController#index as HTML
+  Rendering trains/index.html.erb within layouts/application
+  [1m[36mTrain Load (0.2ms)[0m  [1m[34mSELECT "trains".* FROM "trains"[0m
+  ↳ app/views/trains/index.html.erb:2
+  Rendered trains/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 816)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 1463)
+
+
+Started GET "/trains/new" for ::1 at 2019-10-15 10:10:49 -0500
+Processing by TrainsController#new as HTML
+  Rendering trains/new.html.erb within layouts/application
+  [1m[36mDriver Load (0.2ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers"[0m
+  ↳ app/views/trains/_form.html.erb:7
+  Rendered trains/_form.html.erb (Duration: 7.1ms | Allocations: 4053)
+  Rendered trains/new.html.erb within layouts/application (Duration: 7.3ms | Allocations: 4116)
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 0.9ms | Allocations: 4616)
+
+
+Started POST "/trains" for ::1 at 2019-10-15 10:10:53 -0500
+Processing by TrainsController#create as HTML
+  Parameters: {"authenticity_token"=>"vHbX+n72ou7h0u75T33+1aAdoGGVtsqbYSX1tHZDi3mBeX1+E31EXilqf6mH3esV/7+lkILy1OL7+SgIx3SbcA==", "train"=>{"destination"=>"LA", "time"=>"12", "driver_id"=>"1"}, "commit"=>"Create Train"}
+[31mUnpermitted parameter: :driver_id[0m
+Redirected to http://localhost:3000/trains
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 1188)
+
+
+Started GET "/trains" for ::1 at 2019-10-15 10:10:53 -0500
+Processing by TrainsController#index as HTML
+  Rendering trains/index.html.erb within layouts/application
+  [1m[36mTrain Load (0.2ms)[0m  [1m[34mSELECT "trains".* FROM "trains"[0m
+  ↳ app/views/trains/index.html.erb:2
+  Rendered trains/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 773)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.2ms | Allocations: 1212)
+
+
+Started GET "/trains/new" for ::1 at 2019-10-15 10:11:23 -0500
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by TrainsController#new as HTML
+  Rendering trains/new.html.erb within layouts/application
+  [1m[36mDriver Load (0.2ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers"[0m
+  ↳ app/views/trains/_form.html.erb:7
+  Rendered trains/_form.html.erb (Duration: 14.5ms | Allocations: 4144)
+  Rendered trains/new.html.erb within layouts/application (Duration: 14.7ms | Allocations: 4207)
+Completed 200 OK in 23ms (Views: 14.6ms | ActiveRecord: 1.0ms | Allocations: 9873)
+
+
+Started POST "/trains" for ::1 at 2019-10-15 10:11:30 -0500
+Processing by TrainsController#create as HTML
+  Parameters: {"authenticity_token"=>"WGMu6WEiIsccw8WBwOL2JAsYyzR7j6s3k+qtTW1siN1lbIRtDKnEd9R7VNEIQuPkVLrOxWzLtU4JNnDx3FuY1A==", "train"=>{"destination"=>"LA", "time"=>"12", "driver_id"=>"3"}, "commit"=>"Create Train"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/trains_controller.rb:22:in `create'
+  [1m[36mDriver Load (0.2ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/trains_controller.rb:22:in `create'
+  [1m[36mTrain Create (1.3ms)[0m  [1m[32mINSERT INTO "trains" ("destination", "time", "driver_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["destination", "LA"], ["time", 12], ["driver_id", 3], ["created_at", "2019-10-15 15:11:30.435080"], ["updated_at", "2019-10-15 15:11:30.435080"]]
+  ↳ app/controllers/trains_controller.rb:22:in `create'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/trains_controller.rb:22:in `create'
+Redirected to http://localhost:3000/trains.6
+Completed 302 Found in 10ms (ActiveRecord: 2.8ms | Allocations: 4398)
+
+
+Started GET "/trains.6" for ::1 at 2019-10-15 10:11:30 -0500
+Processing by TrainsController#index as 
+  Rendering trains/index.html.erb within layouts/application
+  [1m[36mTrain Load (0.3ms)[0m  [1m[34mSELECT "trains".* FROM "trains"[0m
+  ↳ app/views/trains/index.html.erb:2
+  Rendered trains/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 839)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.3ms | Allocations: 1436)
+
+
+Started GET "/trains/6" for ::1 at 2019-10-15 10:11:33 -0500
+Processing by TrainsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTrain Load (0.2ms)[0m  [1m[34mSELECT "trains".* FROM "trains" WHERE "trains"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/trains_controller.rb:49:in `current_train'
+  Rendering trains/show.html.erb within layouts/application
+  [1m[36mDriver Load (0.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/trains/show.html.erb:3
+  Rendered trains/show.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1127)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.3ms | Allocations: 2185)
+
+
+Started GET "/trains/6/edit" for ::1 at 2019-10-15 10:13:00 -0500
+Processing by TrainsController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTrain Load (0.1ms)[0m  [1m[34mSELECT "trains".* FROM "trains" WHERE "trains"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/trains_controller.rb:49:in `current_train'
+  Rendering trains/edit.html.erb within layouts/application
+  Rendered trains/_form.html.erb (Duration: 2.9ms | Allocations: 2076)
+  Rendered trains/edit.html.erb within layouts/application (Duration: 3.3ms | Allocations: 2238)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.1ms | Allocations: 3297)
+
+
+  
+ActionView::Template::Error (undefined method `map' for nil:NilClass):
+    4: <%= f.label :time %>
+    5: <%= f.text_field :time %>
+    6: <%= f.label :driver %>
+    7: <%= f.collection_select :driver_id, @drivers, :id, :name %> 
+    8: 
+    9: <%= f.submit %>
+   10: <% end %>
+  
+app/views/trains/_form.html.erb:7
+app/views/trains/_form.html.erb:1
+app/views/trains/edit.html.erb:1
+Started GET "/trains/6/edit" for ::1 at 2019-10-15 10:14:33 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by TrainsController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTrain Load (0.1ms)[0m  [1m[34mSELECT "trains".* FROM "trains" WHERE "trains"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/trains_controller.rb:50:in `current_train'
+  Rendering trains/edit.html.erb within layouts/application
+  [1m[36mDriver Load (0.2ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers"[0m
+  ↳ app/views/trains/_form.html.erb:7
+  Rendered trains/_form.html.erb (Duration: 4.7ms | Allocations: 4204)
+  Rendered trains/edit.html.erb within layouts/application (Duration: 4.9ms | Allocations: 4267)
+Completed 200 OK in 18ms (Views: 4.9ms | ActiveRecord: 1.0ms | Allocations: 10608)
+
+
+Started PATCH "/trains/6" for ::1 at 2019-10-15 10:14:36 -0500
+Processing by TrainsController#update as HTML
+  Parameters: {"authenticity_token"=>"JbDqxH4GrqjkvfyWwyrtN4E35DLpR0yO8lvBcf3LTWGn7QHYfwSnmJi77xHTDDT13kvuGHc7rBVXEDKDKg01kQ==", "train"=>{"destination"=>"LA", "time"=>"12", "driver_id"=>"2"}, "commit"=>"Update Train", "id"=>"6"}
+  [1m[36mTrain Load (0.1ms)[0m  [1m[34mSELECT "trains".* FROM "trains" WHERE "trains"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/trains_controller.rb:50:in `current_train'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/trains_controller.rb:36:in `update'
+  [1m[36mDriver Load (0.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/trains_controller.rb:36:in `update'
+  [1m[36mTrain Update (0.3ms)[0m  [1m[33mUPDATE "trains" SET "driver_id" = ?, "updated_at" = ? WHERE "trains"."id" = ?[0m  [["driver_id", 2], ["updated_at", "2019-10-15 15:14:36.635579"], ["id", 6]]
+  ↳ app/controllers/trains_controller.rb:36:in `update'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/trains_controller.rb:36:in `update'
+Redirected to http://localhost:3000/trains/6
+Completed 302 Found in 7ms (ActiveRecord: 1.3ms | Allocations: 4928)
+
+
+Started GET "/trains/6" for ::1 at 2019-10-15 10:14:36 -0500
+Processing by TrainsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTrain Load (0.1ms)[0m  [1m[34mSELECT "trains".* FROM "trains" WHERE "trains"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/trains_controller.rb:50:in `current_train'
+  Rendering trains/show.html.erb within layouts/application
+  [1m[36mDriver Load (0.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/trains/show.html.erb:3
+  Rendered trains/show.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1127)
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.2ms | Allocations: 2061)
+
+
+Started PATCH "/trains/6" for ::1 at 2019-10-15 10:14:42 -0500
+Processing by TrainsController#update as HTML
+  Parameters: {"authenticity_token"=>"JbDqxH4GrqjkvfyWwyrtN4E35DLpR0yO8lvBcf3LTWGn7QHYfwSnmJi77xHTDDT13kvuGHc7rBVXEDKDKg01kQ==", "train"=>{"destination"=>"LA", "time"=>"12", "driver_id"=>"3"}, "commit"=>"Update Train", "id"=>"6"}
+  [1m[36mTrain Load (0.1ms)[0m  [1m[34mSELECT "trains".* FROM "trains" WHERE "trains"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/trains_controller.rb:50:in `current_train'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/trains_controller.rb:36:in `update'
+  [1m[36mDriver Load (0.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/trains_controller.rb:36:in `update'
+  [1m[36mTrain Update (0.3ms)[0m  [1m[33mUPDATE "trains" SET "driver_id" = ?, "updated_at" = ? WHERE "trains"."id" = ?[0m  [["driver_id", 3], ["updated_at", "2019-10-15 15:14:42.343554"], ["id", 6]]
+  ↳ app/controllers/trains_controller.rb:36:in `update'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/trains_controller.rb:36:in `update'
+Redirected to http://localhost:3000/trains/6
+Completed 302 Found in 6ms (ActiveRecord: 1.3ms | Allocations: 4122)
+
+
+Started GET "/trains/6" for ::1 at 2019-10-15 10:14:42 -0500
+Processing by TrainsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTrain Load (0.1ms)[0m  [1m[34mSELECT "trains".* FROM "trains" WHERE "trains"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/trains_controller.rb:50:in `current_train'
+  Rendering trains/show.html.erb within layouts/application
+  [1m[36mDriver Load (0.3ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/trains/show.html.erb:3
+  Rendered trains/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1127)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.4ms | Allocations: 2065)
+
+
+Started GET "/trains" for ::1 at 2019-10-15 10:14:47 -0500
+Processing by TrainsController#index as HTML
+  Rendering trains/index.html.erb within layouts/application
+  [1m[36mTrain Load (0.2ms)[0m  [1m[34mSELECT "trains".* FROM "trains"[0m
+  ↳ app/views/trains/index.html.erb:2
+  Rendered trains/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 829)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms | Allocations: 1267)
+
+
+Started GET "/trains/6" for ::1 at 2019-10-15 10:14:49 -0500
+Processing by TrainsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTrain Load (0.2ms)[0m  [1m[34mSELECT "trains".* FROM "trains" WHERE "trains"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/trains_controller.rb:50:in `current_train'
+  Rendering trains/show.html.erb within layouts/application
+  [1m[36mDriver Load (0.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/trains/show.html.erb:3
+  Rendered trains/show.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1127)
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.3ms | Allocations: 2064)
+
+

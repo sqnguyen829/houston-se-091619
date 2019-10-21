@@ -15,17 +15,19 @@ class TrainsController < ApplicationController
 
   def new
     @train = Train.new
+    @drivers = Driver.all
   end
 
   def create
     @train = Train.create(trains_params)
-    redirect_to train_path(@train)
+    redirect_to trains_path(@train)
     # redirect_to @train
 
   end
 
   def edit
     # @train = Train.find(params[:id])
+    @drivers = Driver.all
   end
 
   def update
@@ -49,7 +51,7 @@ class TrainsController < ApplicationController
   end
 
   def trains_params
-    params.require(:train).permit(:destination, :time)
+    params.require(:train).permit(:destination, :time, :driver_id)
   end
 
 end

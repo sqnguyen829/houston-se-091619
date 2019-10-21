@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :drivers
   # resources :cats
   resources :trains
   

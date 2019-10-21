@@ -1,0 +1,11 @@
+<h1>This is the show page</h1>
+<h1><%=@instructor.name%></h1>
+
+<% @students.each do | student | %>
+<li> Name : <%= student.name %> 
+ Major :<%= student.major %> 
+ Age :<%= student.age %> </li>
+<%end%>
+
+
+<%= link_to 'delete', url_for(action: :destroy, id: @instructor.id), method: :delete, data: {confirm: 'Please,  no'}%>
