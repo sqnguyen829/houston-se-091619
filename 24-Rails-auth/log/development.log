@@ -1,0 +1,933 @@
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20191021201133)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191021201133"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-10-21 20:14:02.456716"], ["updated_at", "2019-10-21 20:14:02.456716"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "v123"], ["password_digest", "$2a$12$6HqiWRUAy3Zv4Q1qPS9VHOMx9ne/.6qKfS0wG2YMHYeUWQ9FEfukC"], ["created_at", "2019-10-21 20:15:09.267861"], ["updated_at", "2019-10-21 20:15:09.267861"]]
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "v123"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "v123"], ["LIMIT", 1]]
+Started GET "/users/new" for ::1 at 2019-10-21 15:27:27 -0500
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 55.6ms | Allocations: 5982)
+Completed 200 OK in 594ms (Views: 573.1ms | ActiveRecord: 0.7ms | Allocations: 304827)
+
+
+Started POST "/users" for ::1 at 2019-10-21 15:28:26 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"0QrcqW6j1Kt+coh8dnrNib0eGoZkoAzS5EG4d4W9INN6uo560AwsUwlCaQwDN5ZOjvfk83Qqf7bHIeoQq8rr9A==", "user"=>{"username"=>"abc123", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create User"}
+Completed 500 Internal Server Error in 111856ms (ActiveRecord: 0.0ms | Allocations: 97273)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/users_controller.rb:9:in `create'
+Started GET "/users/new" for ::1 at 2019-10-21 15:30:23 -0500
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 79.2ms | Allocations: 509493)
+Completed 200 OK in 287ms (Views: 171.2ms | ActiveRecord: 7.5ms | Allocations: 2074143)
+
+
+Started POST "/users" for ::1 at 2019-10-21 15:30:38 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"KNh0BLIut1Ls/XDAh1rjOxV2BXodWkDGV9A+3c6iiZODaCbXDIFPqpvNkbDyF7j8Jp/7Dw3QM6J0sGy64NVCtA==", "user"=>{"username"=>"abc123", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create User"}
+Completed 500 Internal Server Error in 111878ms (ActiveRecord: 0.0ms | Allocations: 333152)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/users_controller.rb:9:in `create'
+Started GET "/users/new" for ::1 at 2019-10-21 15:37:39 -0500
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 86.7ms | Allocations: 721784)
+Completed 200 OK in 379ms (Views: 226.8ms | ActiveRecord: 20.8ms | Allocations: 2973937)
+
+
+Started POST "/users" for ::1 at 2019-10-21 15:37:54 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"xopAIjP1jTTfq3zRSJjqSIp8kaAIejf7RY4VPgUGls5tOhLxjVp1zKibnaE91bGPuZVv1RjwRJ9m7kdZK3Fd6Q==", "user"=>{"username"=>"abc123", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create User"}
+Redirected to http://localhost:3000/users/new
+Completed 302 Found in 342ms (ActiveRecord: 0.0ms | Allocations: 700439)
+
+
+Started GET "/users/new" for ::1 at 2019-10-21 15:37:55 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 78.8ms | Allocations: 627475)
+Completed 200 OK in 228ms (Views: 201.3ms | ActiveRecord: 0.0ms | Allocations: 1599973)
+
+
+Started POST "/users" for ::1 at 2019-10-21 15:38:18 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"2GXuSJ37q+OBZ3HWw9m3bGZ898SvX84phCjWJzhNGzJz1bybI1RTG/ZXkKa2lOyrVZUJsb/VvU2nSIRAFjrQFQ==", "user"=>{"username"=>"abc123", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (1.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (3.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "abc123"], ["password_digest", "$2a$12$iGBQEA5PED1pvwRGT34qnOvh5GjLCQ1RutLatEGvk2BS3X6DFnQ0O"], ["created_at", "2019-10-21 20:38:19.210865"], ["updated_at", "2019-10-21 20:38:19.210865"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 419ms (ActiveRecord: 6.4ms | Allocations: 1138111)
+
+
+Started GET "/users/2" for ::1 at 2019-10-21 15:38:19 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+Completed 500 Internal Server Error in 1672ms (ActiveRecord: 0.0ms | Allocations: 14427368)
+
+
+  
+NameError (undefined local variable or method `parms' for #<UsersController:0x00007fcadf230aa8>
+Did you mean?  params
+               params=):
+  
+app/controllers/users_controller.rb:20:in `show'
+Started GET "/users/2" for ::1 at 2019-10-21 15:38:41 -0500
+  [1m[35m (11.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 2.4ms | Allocations: 35215)
+Completed 200 OK in 349ms (Views: 134.1ms | ActiveRecord: 24.3ms | Allocations: 2679656)
+
+
+Started GET "/login" for ::1 at 2019-10-21 15:46:52 -0500
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 31.0ms | Allocations: 4206)
+Completed 200 OK in 388ms (Views: 381.7ms | ActiveRecord: 0.0ms | Allocations: 298152)
+
+
+Started GET "/login" for ::1 at 2019-10-21 15:47:41 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 2460)
+Completed 200 OK in 13ms (Views: 11.7ms | ActiveRecord: 0.0ms | Allocations: 6966)
+
+
+Started POST "/login" for ::1 at 2019-10-21 15:47:55 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"3lYYLnVy6oZwRnsZoS2gcmSW4wpdTklLt9UWEfNNHo6npLe21lU6ouKV4iF84/K+MhorxfttFfoh4RZrHPRYKg==", "username"=>"abc123", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "abc123"], ["LIMIT", 1]]
+  ↳ (byebug):1:in `create'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "abc123"], ["LIMIT", 1]]
+  ↳ (byebug):1:in `create'
+Completed 500 Internal Server Error in 236855ms (ActiveRecord: 0.9ms | Allocations: 57035)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/sessions_controller.rb:8:in `create'
+Started GET "/login" for ::1 at 2019-10-21 15:53:35 -0500
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 32.6ms | Allocations: 251220)
+Completed 200 OK in 177ms (Views: 170.4ms | ActiveRecord: 0.0ms | Allocations: 1309894)
+
+
+Started POST "/login" for ::1 at 2019-10-21 15:53:47 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"3WqOhLrsWyTeEdFqShKe65RAMc/N2PyRHRabK6BzjlSkmCEcGcuLAEzCSFKX3Mwnwsz5AGv7oCCLIptRT8rI8A==", "username"=>"abc123", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (abc123) LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8:in `create'
+Completed 500 Internal Server Error in 129ms (ActiveRecord: 5.6ms | Allocations: 811573)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: abc123):
+  
+app/controllers/sessions_controller.rb:8:in `create'
+Started POST "/login" for ::1 at 2019-10-21 15:54:47 -0500
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"3WqOhLrsWyTeEdFqShKe65RAMc/N2PyRHRabK6BzjlSkmCEcGcuLAEzCSFKX3Mwnwsz5AGv7oCCLIptRT8rI8A==", "username"=>"abc123", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "abc123"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8:in `create'
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 457ms (ActiveRecord: 12.0ms | Allocations: 1556272)
+
+
+Started GET "/users/2" for ::1 at 2019-10-21 15:54:49 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 3.2ms | Allocations: 28852)
+Completed 200 OK in 200ms (Views: 160.6ms | ActiveRecord: 2.0ms | Allocations: 1462678)
+
+
+Started GET "/users/2" for ::1 at 2019-10-21 16:07:00 -0500
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 25ms (ActiveRecord: 0.0ms | Allocations: 250262)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:02 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 26ms (ActiveRecord: 0.0ms | Allocations: 237621)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:02 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 27ms (ActiveRecord: 0.0ms | Allocations: 236525)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:03 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 26ms (ActiveRecord: 0.0ms | Allocations: 236527)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:03 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 27ms (ActiveRecord: 0.0ms | Allocations: 236527)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:03 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 33ms (ActiveRecord: 0.0ms | Allocations: 236526)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:03 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 35ms (ActiveRecord: 0.0ms | Allocations: 238750)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:03 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 23ms (ActiveRecord: 0.0ms | Allocations: 236529)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:03 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 29ms (ActiveRecord: 0.0ms | Allocations: 236526)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:03 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 25ms (ActiveRecord: 0.0ms | Allocations: 236533)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:03 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 25ms (ActiveRecord: 0.0ms | Allocations: 236532)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:03 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 35ms (ActiveRecord: 0.0ms | Allocations: 236526)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:03 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 26ms (ActiveRecord: 0.0ms | Allocations: 236530)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:04 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 29ms (ActiveRecord: 0.0ms | Allocations: 236532)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:04 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 24ms (ActiveRecord: 0.0ms | Allocations: 236533)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:04 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 36ms (ActiveRecord: 0.0ms | Allocations: 236525)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:04 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 36ms (ActiveRecord: 0.0ms | Allocations: 236527)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:04 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 27ms (ActiveRecord: 0.0ms | Allocations: 236531)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:04 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 26ms (ActiveRecord: 0.0ms | Allocations: 236528)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:04 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 34ms (ActiveRecord: 0.0ms | Allocations: 236533)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:05 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 75ms (ActiveRecord: 0.0ms | Allocations: 235073)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:05 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 25ms (ActiveRecord: 0.0ms | Allocations: 235076)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:05 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 36ms (ActiveRecord: 0.0ms | Allocations: 235068)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:05 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 41ms (ActiveRecord: 0.0ms | Allocations: 235066)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:05 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 25ms (ActiveRecord: 0.0ms | Allocations: 235073)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:05 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 26ms (ActiveRecord: 0.0ms | Allocations: 235063)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:05 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 32ms (ActiveRecord: 0.0ms | Allocations: 235071)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:06 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 29ms (ActiveRecord: 0.0ms | Allocations: 235068)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:06 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 29ms (ActiveRecord: 0.0ms | Allocations: 235071)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:06 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 34ms (ActiveRecord: 0.0ms | Allocations: 235065)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:06 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 36ms (ActiveRecord: 0.0ms | Allocations: 235067)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:06 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 27ms (ActiveRecord: 0.0ms | Allocations: 235070)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:06 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 37ms (ActiveRecord: 0.0ms | Allocations: 235068)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:06 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 37ms (ActiveRecord: 0.0ms | Allocations: 235066)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:06 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 52ms (ActiveRecord: 0.0ms | Allocations: 235068)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:06 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 47ms (ActiveRecord: 0.0ms | Allocations: 235073)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:07 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 32ms (ActiveRecord: 0.0ms | Allocations: 235843)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:07 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 28ms (ActiveRecord: 0.0ms | Allocations: 235070)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:07 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 38ms (ActiveRecord: 0.0ms | Allocations: 235074)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:07 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 57ms (ActiveRecord: 0.0ms | Allocations: 235068)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:18 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 82ms (ActiveRecord: 0.0ms | Allocations: 235799)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:18 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 32ms (ActiveRecord: 0.0ms | Allocations: 235799)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:18 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 45ms (ActiveRecord: 0.0ms | Allocations: 235799)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:19 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 34ms (ActiveRecord: 0.0ms | Allocations: 235803)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:19 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 34ms (ActiveRecord: 0.0ms | Allocations: 235797)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:19 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 43ms (ActiveRecord: 0.0ms | Allocations: 241878)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:19 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 40ms (ActiveRecord: 0.0ms | Allocations: 238021)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:19 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 46ms (ActiveRecord: 0.0ms | Allocations: 235799)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:19 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 34ms (ActiveRecord: 0.0ms | Allocations: 235801)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:19 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 45ms (ActiveRecord: 0.0ms | Allocations: 235804)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:19 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 33ms (ActiveRecord: 0.0ms | Allocations: 235798)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:20 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 39ms (ActiveRecord: 0.0ms | Allocations: 235804)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:20 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 34ms (ActiveRecord: 0.0ms | Allocations: 235803)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:20 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 44ms (ActiveRecord: 0.0ms | Allocations: 235797)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:20 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 35ms (ActiveRecord: 0.0ms | Allocations: 235798)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:20 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 47ms (ActiveRecord: 0.0ms | Allocations: 235805)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:20 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 32ms (ActiveRecord: 0.0ms | Allocations: 235803)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:20 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 44ms (ActiveRecord: 0.0ms | Allocations: 235800)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:20 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 34ms (ActiveRecord: 0.0ms | Allocations: 235797)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:20 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 41ms (ActiveRecord: 0.0ms | Allocations: 235799)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:51 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 25ms (ActiveRecord: 0.0ms | Allocations: 235840)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:51 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 49ms (ActiveRecord: 0.0ms | Allocations: 235069)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:51 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 40ms (ActiveRecord: 0.0ms | Allocations: 235068)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:51 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 53ms (ActiveRecord: 0.0ms | Allocations: 242922)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:51 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 37ms (ActiveRecord: 0.0ms | Allocations: 235069)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:51 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 31ms (ActiveRecord: 0.0ms | Allocations: 241148)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:51 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 45ms (ActiveRecord: 0.0ms | Allocations: 235067)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:52 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 34ms (ActiveRecord: 0.0ms | Allocations: 235068)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:52 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 46ms (ActiveRecord: 0.0ms | Allocations: 238772)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:52 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 45ms (ActiveRecord: 0.0ms | Allocations: 235069)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:52 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 23ms (ActiveRecord: 0.0ms | Allocations: 235068)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:52 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 40ms (ActiveRecord: 0.0ms | Allocations: 235069)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:52 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 43ms (ActiveRecord: 0.0ms | Allocations: 235066)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:52 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 30ms (ActiveRecord: 0.0ms | Allocations: 235075)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:52 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 43ms (ActiveRecord: 0.0ms | Allocations: 235068)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:53 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 47ms (ActiveRecord: 0.0ms | Allocations: 235068)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:53 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 37ms (ActiveRecord: 0.0ms | Allocations: 235070)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:53 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 40ms (ActiveRecord: 0.0ms | Allocations: 235073)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:53 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 38ms (ActiveRecord: 0.0ms | Allocations: 235066)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:07:53 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 23ms (ActiveRecord: 0.0ms | Allocations: 235069)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:09:24 -0500
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 25.1ms | Allocations: 251211)
+Completed 200 OK in 187ms (Views: 169.9ms | ActiveRecord: 0.0ms | Allocations: 1323596)
+
+
+Started GET "/users/2" for ::1 at 2019-10-21 16:09:42 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 54ms (ActiveRecord: 0.0ms | Allocations: 248510)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:09:42 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 52.1ms | Allocations: 251203)
+Completed 200 OK in 218ms (Views: 197.1ms | ActiveRecord: 0.0ms | Allocations: 1276457)
+
+
+Started GET "/users/new" for ::1 at 2019-10-21 16:10:15 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 87.6ms | Allocations: 669029)
+Completed 200 OK in 583ms (Views: 227.8ms | ActiveRecord: 15.1ms | Allocations: 3944339)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:10:24 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 35.1ms | Allocations: 251207)
+Completed 200 OK in 228ms (Views: 205.1ms | ActiveRecord: 0.0ms | Allocations: 1276462)
+
+
+Started POST "/login" for ::1 at 2019-10-21 16:10:43 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"6AdLKh0gRHH4MKbqvaqRIcFHIXnvixW+63FuAZ5Pzx2R9eSyvgeUVWrjP9JgZMPtl8vptkmoSQ99RW57cfaJuQ==", "username"=>"abc123", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (14.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "abc123"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:10:in `create'
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 336ms (ActiveRecord: 14.1ms | Allocations: 555795)
+
+
+Started GET "/users/2" for ::1 at 2019-10-21 16:10:43 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 12109)
+Completed 200 OK in 208ms (Views: 119.7ms | ActiveRecord: 2.1ms | Allocations: 1495637)
+
+
+Started GET "/users/2" for ::1 at 2019-10-21 16:10:48 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (10.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mUser Load (12.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 12109)
+Completed 200 OK in 203ms (Views: 137.0ms | ActiveRecord: 22.9ms | Allocations: 1416780)
+
+
+Started GET "/users/2" for ::1 at 2019-10-21 16:11:01 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mUser Load (10.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 12109)
+Completed 200 OK in 219ms (Views: 153.9ms | ActiveRecord: 11.7ms | Allocations: 1417550)
+
+
+Started GET "/users/2" for ::1 at 2019-10-21 16:14:05 -0500
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 21.7ms | Allocations: 127968)
+Completed 200 OK in 484ms (Views: 199.1ms | ActiveRecord: 16.1ms | Allocations: 3134470)
+
+
+Started DELETE "/logout" for ::1 at 2019-10-21 16:14:11 -0500
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"6NmQ5z4BHdu0ldQO1y94lbNSNVpVBf6BGhEnlLi7F+VQ7crnETRzVtNJ/KBVLlj8e8ySDZwsMg+l+aSGH8UArA==", "commit"=>"Logout"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+No template found for SessionsController#destroy, rendering head :no_content
+Completed 204 No Content in 145ms (ActiveRecord: 1.5ms | Allocations: 789538)
+
+
+Started DELETE "/logout" for ::1 at 2019-10-21 16:14:15 -0500
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"6NmQ5z4BHdu0ldQO1y94lbNSNVpVBf6BGhEnlLi7F+VQ7crnETRzVtNJ/KBVLlj8e8ySDZwsMg+l+aSGH8UArA==", "commit"=>"Logout"}
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticated rendered or redirected
+Completed 302 Found in 55ms (ActiveRecord: 0.0ms | Allocations: 356117)
+
+
+Started GET "/login" for ::1 at 2019-10-21 16:14:16 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 31.7ms | Allocations: 319750)
+Completed 200 OK in 327ms (Views: 301.1ms | ActiveRecord: 0.0ms | Allocations: 1621607)
+
+
+Started POST "/login" for ::1 at 2019-10-21 16:16:34 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"+TS5tnXPGIT/pKSs9PxJFaB03VBh8GHXh4rs7b1VIlGAxhYu1ujIoG13PZQpMhvZ9vgVn8fTPWYRvuyXUuxk9Q==", "username"=>"v123", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "v123"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:10:in `create'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 331ms (ActiveRecord: 3.4ms | Allocations: 684079)
+
+
+Started GET "/users/1" for ::1 at 2019-10-21 16:16:35 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 15.6ms | Allocations: 102126)
+Completed 200 OK in 198ms (Views: 134.9ms | ActiveRecord: 2.5ms | Allocations: 1712642)
+
+
+Started GET "/users/2" for ::1 at 2019-10-21 16:16:48 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 18.6ms | Allocations: 102123)
+Completed 200 OK in 234ms (Views: 152.5ms | ActiveRecord: 3.1ms | Allocations: 1711794)
+
+
+Started GET "/users/2" for ::1 at 2019-10-21 16:17:35 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 22.1ms | Allocations: 102127)
+Completed 200 OK in 385ms (Views: 152.9ms | ActiveRecord: 22.3ms | Allocations: 2926223)
+
+
+Started GET "/users/4" for ::1 at 2019-10-21 16:18:19 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 17.3ms | Allocations: 102123)
+Completed 200 OK in 212ms (Views: 134.5ms | ActiveRecord: 2.2ms | Allocations: 1681308)
+
+
