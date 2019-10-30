@@ -30,8 +30,29 @@ document.addEventListener("DOMContentLoaded", function(){
     parentDiv.addEventListener("click", function(){
         // debugger
 
-        if(event.target.dataset.name === 'alert'){
-            alert("I am from alert button")
+        // if(event.target.dataset.name === 'alert'){
+        //     alert("I am from alert button")
+        // }
+        //  else if (event.target.dataset.name === 'log') {
+        //     console.log('HI')
+        // } else if (event.target.dataset.name === 'error') {
+        //     console.error('HI')
+        // }
+
+        //OR you can use switch statement 
+
+        switch(event.target.dataset.name){
+            case "alert":
+                alert("I am from alert button")
+                break
+            case "log":
+                console.log('HI')
+                break
+            case "error":
+                console.error('HI')
+                break
+            default:
+                console.log("wrong click")
         }
     })
 })

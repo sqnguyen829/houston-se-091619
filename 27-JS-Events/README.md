@@ -258,7 +258,11 @@ helicopterNode.addEventListener('click', function(event) {
 
   if (event.target.dataset.name === 'alert') {
     window.alert('HI')
-  }  
+  } else if (event.target.dataset.name === 'log') {
+    console.log('HI')
+  } else if (event.target.dataset.name === 'error') {
+    console.error('HI')
+  }
 })
 ```
 
