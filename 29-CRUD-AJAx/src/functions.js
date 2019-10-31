@@ -57,7 +57,7 @@ function renderSinglePokemon(pokemon) {
     fetch("http://localhost:3000/pokemon/"+pokemon.id, {
       method: "DELETE"
     }) 
-    .then(res => res.json())
+    // .then(res => res.json()) DELETE fetch return nothing so no need to convert it to JSON
     .then(()=> {
       div.remove() //updatimng the DOM (removing the div for a deleted pokemon)
     })
@@ -78,7 +78,7 @@ function renderSinglePokemon(pokemon) {
       event.preventDefault()
       // console.log(editForm)
       // debugger
-      
+
       fetch("http://localhost:3000/pokemon/"+pokemon.id, {
         method: "PATCH",
         headers: {
@@ -92,7 +92,7 @@ function renderSinglePokemon(pokemon) {
         })
       })
       .then(res => res.json())
-      .then(updatePoke => {
+      .then(updatePoke => { //returns an updated pokemon as response
         //updating the DOM(update name and url for a updated pokemon)
         h1.innerText = updatePoke.name
         img.src = updatePoke.sprites.front
