@@ -1,12 +1,12 @@
 
 /************************* Helper Fns for Producing HTML **********************/
 function renderAllPokemon(pokemonArray) {
-  pokemonArray.map(pokemon => addPokemon(pokemon))
+  pokemonArray.map(pokemon => addPokemon(pokemon)) //iterating through all pokemons
 }
 
 function addPokemon(pokemon) {
   const pokemonContainer = document.querySelector('#pokemon-container')
-  const div = renderSinglePokemon(pokemon);
+  const div = renderSinglePokemon(pokemon); //for each pokemon expecting a card
   pokemonContainer.append(div);
 }
 
@@ -18,8 +18,11 @@ function renderSinglePokemon(pokemon) {
       <img data-id="7" data-action="flip" class="toggle-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png">
     </div>
   </div>
-</div> */}
+</div> */} // helps top create the pokemon card structure
 
+/*********************************************************************************/
+
+  //creating html elements and assigning needed properties to it
   let div = document.createElement('div')
   div.className = "pokemon-card"
 
@@ -50,12 +53,13 @@ function renderSinglePokemon(pokemon) {
     // debugger
     // fetch(`http://localhost:3000/pokemon/${pokemon.id}`)
 
+    //delete fetch request doesn't need headers or body since we are not sending any dat to the server
     fetch("http://localhost:3000/pokemon/"+pokemon.id, {
       method: "DELETE"
-    })
+    }) 
     .then(res => res.json())
     .then(()=> {
-      div.remove()
+      div.remove() //updatimng the DOM (removing the div for a deleted pokemon)
     })
   })
 
@@ -63,34 +67,37 @@ function renderSinglePokemon(pokemon) {
   editBtn.innerText = "EDIT" 
   editBtn.className = "pokemon-button"
 
+  //edit button eventlistner for updating a pokemon
   editBtn.addEventListener('click', () => {
     let editForm = document.querySelector("#pokemon-edit-form")
     // debugger
-    editForm[0].value = pokemon.name
-    editForm[1].value = pokemon.sprites.front
+    editForm[0].value = pokemon.name //displaying name in the input field for name
+    editForm[1].value = pokemon.sprites.front //displaying imagURL in the input field for image URL
 
     editForm.addEventListener('submit', () => {
       event.preventDefault()
       // console.log(editForm)
       // debugger
+      
       fetch("http://localhost:3000/pokemon/"+pokemon.id, {
         method: "PATCH",
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          name: event.target[0].value,
+          name: event.target[0].value,//input field for name
           sprites: {
-            front: event.target[1].value
+            front: event.target[1].value//input field for image URL
           }
         })
       })
       .then(res => res.json())
       .then(updatePoke => {
+        //updating the DOM(update name and url for a updated pokemon)
         h1.innerText = updatePoke.name
         img.src = updatePoke.sprites.front
       })
-      event.target.reset()
+      event.target.reset() //resetting the form
     })
   })
 
