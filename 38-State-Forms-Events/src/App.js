@@ -5,7 +5,6 @@ import paintings from './paintings'
 import PaintingList from './PaintingList';
 import PaintingForm from './PaintingForm';
 
-
 class App extends React.Component {
 
   constructor(){
@@ -18,11 +17,6 @@ class App extends React.Component {
     }
   }
 
-  // state = {
-  //   key: "value"
-  // }
-  // console.log(paintings)
-
   changeDisplay = () => {
     this.setState({
       displayForm: !this.state.displayForm,
@@ -32,8 +26,6 @@ class App extends React.Component {
 
   addPainting = (e) => {
     e.preventDefault()
-    // debugger
-
     let painting = { title: e.target[0].value, 
                      image: e.target[1].value,
                      artist: {
@@ -45,21 +37,16 @@ class App extends React.Component {
       paintings: [...this.state.paintings, painting],
       displayForm: !this.state.displayForm
     })
-
   }
-
 
   render(){return (
     <div>
-  {/* <p>current id value: {this.state.id}</p> */}
       <NavBar />
       <button className="ui inverted primary button" onClick={this.changeDisplay} > Add Painting</button>
       {this.state.displayForm 
       ? <PaintingForm addPainting={this.addPainting} />
       : <PaintingList paintings={this.state.paintings}/> 
       }
-
-
     </div>
   );}
 }
